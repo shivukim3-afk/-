@@ -1397,6 +1397,124 @@
         }
 
         @media (max-width: 600px) {
+            /* Mobile back header style */
+            .mobile-back-header {
+                display: none;
+            }
+            
+            @media (max-width: 600px) {
+                .mobile-back-header {
+                    display: block !important;
+                    margin-bottom: 0.8rem !important;
+                    margin-top: 0.5rem !important;
+                    text-align: right !important;
+                }
+                .back-home-btn {
+                    background: rgba(10, 25, 49, 0.05) !important;
+                    border: none !important;
+                    color: var(--color-navy) !important;
+                    padding: 0.6rem 1.2rem !important;
+                    font-family: var(--font-main) !important;
+                    font-size: 0.88rem !important;
+                    font-weight: 700 !important;
+                    border-radius: var(--border-radius-md) !important;
+                    cursor: pointer !important;
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    gap: 0.5rem !important;
+                    transition: var(--transition-smooth) !important;
+                    box-shadow: none !important;
+                }
+                .back-home-btn:active {
+                    transform: scale(0.95) !important;
+                }
+                
+                /* Smart, efficient full-width rows for categories */
+                .portals-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 0.6rem !important;
+                }
+                .portal-card {
+                    flex-direction: row !important;
+                    align-items: center !important;
+                    text-align: right !important;
+                    padding: 0.8rem 1rem !important;
+                    gap: 1rem !important;
+                    border-radius: var(--border-radius-md) !important;
+                    position: relative !important;
+                }
+                .portal-icon {
+                    width: 38px !important;
+                    height: 38px !important;
+                    font-size: 1.1rem !important;
+                    margin-left: 0 !important;
+                }
+                .portal-title {
+                    font-size: 0.95rem !important;
+                    font-weight: 700 !important;
+                    margin: 0 !important;
+                }
+                .portal-arrow {
+                    display: block !important;
+                    font-size: 0.9rem !important;
+                    color: var(--text-muted) !important;
+                    margin-right: auto !important; /* Push arrow to the left side */
+                }
+                
+                /* Full-width premium horizontal rows for product cards (1 per row) */
+                .products-grid {
+                    grid-template-columns: 1fr !important;
+                    gap: 0.8rem !important;
+                }
+                .product-card {
+                    display: flex !important;
+                    flex-direction: row !important; /* Side-by-side row layout */
+                    align-items: center !important;
+                    padding: 0.8rem !important;
+                    gap: 0.8rem !important;
+                    text-align: right !important;
+                }
+                .product-visual {
+                    width: 85px !important;
+                    height: 85px !important;
+                    flex: 0 0 85px !important;
+                    margin-bottom: 0 !important; /* Reset bottom margin */
+                }
+                .product-name {
+                    font-size: 0.92rem !important;
+                    font-weight: 700 !important;
+                    height: auto !important; /* Auto wrap height */
+                    margin-bottom: 0.2rem !important;
+                    display: -webkit-box !important;
+                    -webkit-line-clamp: 2 !important;
+                    -webkit-box-orient: vertical !important;
+                    overflow: hidden !important;
+                }
+                .product-pack {
+                    font-size: 0.76rem !important;
+                    margin-bottom: 0.3rem !important;
+                }
+                
+                /* Layout for price and add-to-cart in the horizontal view */
+                .product-card > div:not(.product-visual) {
+                    flex-grow: 1 !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                }
+                
+                /* Align price and cart button nicely */
+                .product-price {
+                    font-size: 1.1rem !important;
+                    margin-bottom: 0.4rem !important;
+                }
+                .add-to-cart-btn {
+                    padding: 0.45rem 1rem !important;
+                    font-size: 0.82rem !important;
+                    width: auto !important;
+                    align-self: flex-start !important; /* Align to the left (Ltr flow) */
+                }
+            }
+
             /* Minimalist half-screen Hero */
             .hero {
                 height: 48vh !important;
@@ -2990,16 +3108,25 @@
             </button>
         </div>
 
-        <!-- SEARCH BAR FOR MOBILE VIEW (Visible only on mobile) -->
-        <div class="mobile-search-bar-container">
-            <div class="header-search" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 1rem 0 1.5rem 0; position: relative;">
-                <input type="text" id="mobile-catalog-search" placeholder="חפש מוצר ניקוי, נייר, חד פעמי..." style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
-                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
-            </div>
-        </div>
+
 
         <!-- ── VIEW 1: CATALOG MODE ── -->
         <div id="view-catalog" class="content-view active">
+            <!-- MOBILE BACK HEADER -->
+            <div class="mobile-back-header">
+                <button class="back-home-btn" onclick="handleMobileBackClick()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    חזרה למסך הבית
+                </button>
+            </div>
+
+            <!-- SEARCH BAR FOR MOBILE VIEW (Moved here) -->
+            <div class="mobile-search-bar-container">
+                <div class="header-search" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
+                    <input type="text" id="mobile-catalog-search" placeholder="חפש מוצר ניקוי, נייר, חד פעמי..." style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
+                </div>
+            </div>
             <!-- PORTAL CATEGORY GATEWAYS -->
 
 
@@ -3057,6 +3184,13 @@
 
         <!-- ── VIEW 2: EXPRESS QUICK ORDER MODE ── -->
         <div id="view-quick" class="content-view">
+            <!-- MOBILE BACK HEADER -->
+            <div class="mobile-back-header">
+                <button class="back-home-btn" onclick="handleMobileBackClick()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    חזרה למסך הבית
+                </button>
+            </div>
             <div class="quick-order-container">
                 <div class="quick-order-header">
                     <h2 class="quick-order-title">טופס הזמנה מהיר לרכש מוסדי</h2>
@@ -7358,6 +7492,13 @@
 
 
         function handleMobileModeClick(mode) {
+            // Hide hero and mode squares on mobile to simulate opening a new page
+            const hero = document.querySelector('.hero');
+            if (hero) hero.style.setProperty('display', 'none', 'important');
+            
+            const squares = document.getElementById('mobile-mode-squares');
+            if (squares) squares.style.setProperty('display', 'none', 'important');
+            
             // Run native switchMode routine
             switchMode(mode);
             
@@ -7375,14 +7516,30 @@
             const activeBtn = document.getElementById(`square-${mode}-btn`);
             if (activeBtn) activeBtn.classList.add('active');
             
-            // Smoothly scroll down to categories or quick order form anchor
-            setTimeout(() => {
-                if (mode === 'catalog') {
-                    document.getElementById('portals-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    document.getElementById('view-quick').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
+            // Scroll to the very top of the page (since hero is hidden, this brings view directly below header)
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        function handleMobileBackClick() {
+            // Restore hero and mode squares visibility
+            const hero = document.querySelector('.hero');
+            if (hero) hero.style.setProperty('display', 'flex', 'important');
+            
+            const squares = document.getElementById('mobile-mode-squares');
+            if (squares) squares.style.setProperty('display', 'grid', 'important');
+            
+            // Hide content views
+            document.querySelectorAll('.content-view').forEach(v => {
+                v.classList.remove('revealed');
+            });
+            
+            // De-select square buttons
+            document.querySelectorAll('.mode-square-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            // Scroll smoothly back to top
+            window.scrollTo({ top: 0, behavior: 'auto' });
         }
 
 
