@@ -1397,6 +1397,110 @@
         }
 
         @media (max-width: 600px) {
+            /* Compact Hero elements on Mobile for above-the-fold layout */
+            .hero {
+                padding: 4.5rem 1rem 1rem 1rem !important;
+                gap: 1rem !important;
+            }
+            .hero-desc {
+                display: none !important; /* Hide long paragraph */
+            }
+            .hero-stats {
+                display: none !important; /* Hide huge stack stats block */
+            }
+            .hero-cta-btn {
+                width: 100% !important;
+                justify-content: center !important;
+                padding: 0.8rem 1.5rem !important;
+                font-size: 1rem !important;
+                margin-top: 0.5rem !important;
+            }
+            
+            /* Horizontal Slider / Carousel for Sub-portals subcategories list */
+            .sub-portals-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 0.6rem !important;
+                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+                -ms-overflow-style: none !important;
+                scrollbar-width: none !important;
+            }
+            .sub-portals-grid::-webkit-scrollbar {
+                display: none !important;
+            }
+            .sub-portal-card {
+                flex: 0 0 110px !important;
+                height: 110px !important;
+                scroll-snap-align: start !important;
+            }
+            
+            /* Mobile Sticky Bottom Action Bar */
+            .mobile-sticky-bar {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: rgba(255, 255, 255, 0.90) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+                box-shadow: 0 -4px 20px rgba(10, 25, 49, 0.08) !important;
+                z-index: 999 !important;
+                padding: 0.5rem 0.2rem !important;
+                text-align: center !important;
+                direction: rtl !important;
+            }
+            .sticky-bar-item {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                color: var(--color-navy) !important;
+                text-decoration: none !important;
+                font-family: var(--font-main) !important;
+                font-size: 0.75rem !important;
+                font-weight: 700 !important;
+                cursor: pointer !important;
+                gap: 0.25rem !important;
+                transition: var(--transition-smooth) !important;
+            }
+            .sticky-bar-item i {
+                font-size: 1.25rem !important;
+            }
+            .sticky-bar-item.whatsapp {
+                color: #25D366 !important;
+            }
+            .sticky-bar-item.cart {
+                color: var(--color-blue) !important;
+            }
+            .sticky-bar-item:active {
+                transform: scale(0.95) !important;
+            }
+            body {
+                padding-bottom: 75px !important;
+            }
+            .mobile-sticky-bar .cart-count-badge {
+                position: absolute !important;
+                top: -8px !important;
+                right: -10px !important;
+                background: var(--color-orange) !important;
+                color: white !important;
+                font-size: 0.65rem !important;
+                font-weight: 800 !important;
+                min-width: 17px !important;
+                height: 17px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0 4px !important;
+                border: 2px solid white !important;
+            }
+
             /* Hide arrows inside category cards on mobile to reduce clutter */
             .portal-arrow, .sub-portal-card-arrow {
                 display: none !important;
@@ -2650,6 +2754,42 @@
             }
         }
 
+    
+        /* Handcrafted Hero CTA Button style */
+        .hero-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--color-blue);
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+            gap: 0.6rem;
+            margin-top: 1.2rem;
+            z-index: 10;
+        }
+        .hero-cta-btn i {
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        .hero-cta-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+        .hero-cta-btn:hover i {
+            transform: translateY(3px);
+        }
+        .hero-cta-btn:active {
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body>
@@ -2706,6 +2846,10 @@
             <span class="hero-badge">שיווקים — הכל במקום אחד לעסק ולבית</span>
             <h1 class="hero-title">אספקה מקצועית<br><span>למוסד, לבית ולמשרד</span></h1>
             <p class="hero-desc">מתמחים באספקת מוצרי נייר וניגוב, חומרי ניקוי מקצועיים, מוצרי חד-פעמי ומוצרים ייעודיים לצימרים ומתחמי אירוח. שירות אישי ומהיר ישירות אליכם.</p>
+            <button class="hero-cta-btn" onclick="document.getElementById('portals-grid').scrollIntoView({ behavior: 'smooth', block: 'start' })">
+                <span>מעבר לקטלוג המוצרים</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </button>
             
             <div class="hero-stats">
                 <div class="hero-stat-card">
@@ -3194,6 +3338,12 @@
         function updateCartCounter() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cart-counter').textContent = count;
+            
+            // Sync mobile sticky bar cart badge
+            const mobileStickyCounter = document.getElementById('mobile-sticky-cart-count');
+            if (mobileStickyCounter) {
+                mobileStickyCounter.textContent = count;
+            }
         }
 
         function calculateCartTotal() {
@@ -7294,6 +7444,25 @@
             <div class="legal-content" id="legal-modal-content">
                 <!-- Legal content injected dynamically via JS -->
             </div>
+        </div>
+    </div>
+
+    <!-- MOBILE STICKY BOTTOM BAR -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:050-5178445" class="sticky-bar-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>חייג עכשיו</span>
+        </a>
+        <a href="https://wa.me/972505178445" target="_blank" class="sticky-bar-item whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>הזמנה בוואטסאפ</span>
+        </a>
+        <div class="sticky-bar-item cart" onclick="toggleCart(true)">
+            <div class="cart-icon-wrapper" style="position: relative;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count-badge" id="mobile-sticky-cart-count">0</span>
+            </div>
+            <span>סל הקניות</span>
         </div>
     </div>
 
