@@ -2657,6 +2657,7 @@
         .mobile-mode-squares,
         .mobile-home-extra,
         .mobile-back-header,
+        .mobile-search-bar-container,
         .mobile-sticky-bar {
             display: none !important;
         }
@@ -2825,7 +2826,8 @@
                 color: var(--color-navy) !important;
                 display: flex !important;
                 align-items: center !important;
-                justify-content: center !}
+                justify-content: center !important;
+            }
             .mode-square-title {
                 font-size: 1.1rem !important;
                 font-weight: 800 !important;
@@ -2868,14 +2870,15 @@
                 transform: scale(0.95) !important;
             }
 
-            /* Mobile Search Bar wrapper and margins */
+            /* Mobile Search Bar container overrides (Show in mobile view) */
             .mobile-search-bar-container {
+                display: block !important;
                 margin-top: 1.6rem !important;
                 margin-bottom: 1.2rem !important;
             }
             /* Styling mobile search wrapper class (which replaces class header-search to bypass display:none) */
             .mobile-search-wrapper {
-                display: block !important;
+                display: block;
                 border: 1px solid rgba(0, 133, 255, 0.2) !important;
                 background: #ffffff !important;
                 border-radius: var(--border-radius-md) !important;
@@ -2893,10 +2896,9 @@
             }
 
             /* ==========================================================================
-               STEP 1: MAIN PORTALS GRID (Modified to render 4 categories first in 2x2 grid, then All Products card spanning 2 columns)
+               STEP 1: MAIN PORTALS GRID (Modified to render 4 categories first in 2x2 grid, then All Products card spanning 2 columns. Removed display:grid !important to allow JS display toggling)
                ========================================================================== */
             .portals-grid {
-                display: grid !important;
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
@@ -2921,7 +2923,7 @@
                 box-shadow: 0 0 0 2px var(--color-cyan), var(--shadow-hover) !important;
             }
             .portal-card[data-portal="all"] {
-                display: flex !important; /* Restore All Products card */
+                display: flex; /* Restore All Products card */
                 order: 2 !important; /* Push All Products to bottom below the 4 category cards */
                 grid-column: span 2 !important; /* Span full width (2 columns) */
                 padding: 1.8rem 1rem !important;
@@ -2943,10 +2945,9 @@
             }
 
             /* ==========================================================================
-               STEP 2: SUB-PORTALS GRID (Subcategories 2x2 grid of beautiful blue squares)
+               STEP 2: SUB-PORTALS GRID (Subcategories 2x2 grid of beautiful blue squares. Removed display:grid !important to allow JS display toggling)
                ========================================================================== */
             .sub-portals-grid {
-                display: grid !important; /* Unhide on mobile! */
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 1rem !important;
                 margin-bottom: 1.5rem !important;
@@ -3285,7 +3286,7 @@
 
             <!-- SEARCH BAR FOR MOBILE VIEW (Moved here with compact placeholder and custom class to prevent display:none override) -->
             <div class="mobile-search-bar-container">
-                <div class="mobile-search-wrapper" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
+                <div class="mobile-search-wrapper" id="mobile-search-wrapper" style="width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
                     <input type="text" id="mobile-catalog-search" placeholder="חיפוש מוצרים" style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
                     <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
                 </div>
@@ -3913,7 +3914,11 @@
             
             // Render category gateways (sub-portals) if portal is selected (but not 'all')
             const subGrid = document.getElementById('sub-portals-grid');
-            const isMobile = window.innerWidth <= 600;
+            
+            // Modern check for mobile layout based on mobile home extra banner or body classes
+            const isMobile = document.body.classList.contains('mobile-catalog-active') || 
+                             document.body.classList.contains('mobile-quick-active') || 
+                             window.innerWidth <= 600;
             
             if (activePortal) {
                 // On mobile, if we are inside a category, we hide the main category gateways grid to show products/subcategories directly
