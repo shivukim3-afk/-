@@ -2795,7 +2795,7 @@
             }
             .mode-square-btn {
                 background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.08) !important;
+                border: 1px solid #e2e8f0 !important;
                 border-radius: var(--border-radius-lg) !important;
                 padding: 1.5rem 0.8rem !important;
                 display: flex !important;
@@ -2806,49 +2806,33 @@
                 gap: 0.6rem !important;
                 box-shadow: var(--shadow-soft) !important;
                 cursor: pointer !important;
-                transition: var(--transition-smooth) !important;
+                transition: transform 0.2s, box-shadow 0.2s !important;
             }
             .mode-square-btn:active {
-                transform: scale(0.95) !important;
+                transform: scale(0.96) !important;
             }
             .mode-square-icon {
-                width: 46px !important;
-                height: 46px !important;
-                border-radius: 50% !important;
-                background: rgba(37, 99, 235, 0.06) !important;
-                color: var(--color-blue) !important;
+                font-size: 2.2rem !important;
+                color: var(--color-navy) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                font-size: 1.3rem !important;
             }
             .mode-square-title {
-                font-size: 0.9rem !important;
+                font-size: 1.1rem !important;
                 font-weight: 800 !important;
                 color: var(--color-navy) !important;
                 margin: 0 !important;
             }
             .mode-square-desc {
-                font-size: 0.7rem !important;
+                font-size: 0.72rem !important;
                 color: var(--text-muted) !important;
                 line-height: 1.2 !important;
                 margin: 0 !important;
             }
             .mode-square-btn.active {
-                background: var(--color-navy) !important;
-                border-color: var(--color-navy) !important;
-                color: #ffffff !important;
-                box-shadow: var(--shadow-medium) !important;
-            }
-            .mode-square-btn.active .mode-square-title {
-                color: #ffffff !important;
-            }
-            .mode-square-btn.active .mode-square-desc {
-                color: rgba(255, 255, 255, 0.7) !important;
-            }
-            .mode-square-btn.active .mode-square-icon {
-                background: rgba(255, 255, 255, 0.15) !important;
-                color: #ffffff !important;
+                border-color: var(--color-cyan) !important;
+                box-shadow: 0 0 0 2px var(--color-cyan), var(--shadow-hover) !important;
             }
 
             /* Mobile Back Header */
@@ -3142,7 +3126,7 @@
         }
 </style>
 </head>
-<body>
+<body class="mobile-home-active">
 
     <!-- CUSTOM MOUSE CURSOR -->
     <div class="custom-cursor" id="custom-cursor"></div>
@@ -3270,7 +3254,13 @@
             </button>
         </div>
 
-
+        <!-- SEARCH BAR FOR MOBILE VIEW (Visible only on mobile) -->
+        <div class="mobile-search-bar-container">
+            <div class="header-search" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 1rem 0 1.5rem 0; position: relative;">
+                <input type="text" id="mobile-catalog-search" placeholder="חפש מוצר ניקוי, נייר, חד פעמי..." style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
+                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
+            </div>
+        </div>
 
         <!-- ── VIEW 1: CATALOG MODE ── -->
         <div id="view-catalog" class="content-view active">
