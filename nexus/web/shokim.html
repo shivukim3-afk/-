@@ -2854,8 +2854,9 @@
                 box-shadow: 0 0 0 2px var(--color-cyan), var(--shadow-hover) !important;
             }
 
-            /* Mobile Back Header */
+            /* Mobile Back Header (Force visible with display: block !important to override global hidden rule) */
             .mobile-back-header {
+                display: block !important;
                 margin-bottom: 0.8rem !important;
                 margin-top: 0.5rem !important;
                 text-align: right !important;
