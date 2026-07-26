@@ -1397,23 +1397,50 @@
         }
 
         @media (max-width: 600px) {
-            /* Compact Hero elements on Mobile for above-the-fold layout */
+            /* Compact Hero elements on Mobile - identical to desktop text but smaller */
             .hero {
-                padding: 4.5rem 1rem 1rem 1rem !important;
-                gap: 1rem !important;
+                padding: 4.5rem 1rem 1.5rem 1rem !important;
+                gap: 0.8rem !important;
+            }
+            .hero-badge {
+                display: none !important; /* Remove blue bubble above */
+            }
+            .hero-title {
+                font-size: 1.6rem !important;
+                line-height: 1.3 !important;
             }
             .hero-desc {
-                display: none !important; /* Hide long paragraph */
+                display: block !important;
+                font-size: 0.82rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 0.8rem !important;
             }
             .hero-stats {
-                display: none !important; /* Hide huge stack stats block */
-            }
-            .hero-cta-btn {
-                width: 100% !important;
-                justify-content: center !important;
-                padding: 0.8rem 1.5rem !important;
-                font-size: 1rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.4rem !important;
                 margin-top: 0.5rem !important;
+            }
+            .hero-stat-card {
+                padding: 0.5rem 0.8rem !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: right !important;
+                gap: 0.6rem !important;
+                border-radius: var(--border-radius-sm) !important;
+            }
+            .hero-stat-num {
+                font-size: 1.2rem !important;
+                margin: 0 !important;
+                min-width: 35px !important;
+                text-align: center !important;
+            }
+            .hero-stat-label {
+                font-size: 0.72rem !important;
+                margin: 0 !important;
+                text-align: right !important;
+                line-height: 1.2 !important;
             }
             
             /* Horizontal Slider / Carousel for Sub-portals subcategories list */
@@ -2755,40 +2782,7 @@
         }
 
     
-        /* Handcrafted Hero CTA Button style */
-        .hero-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            background: var(--color-blue);
-            color: #ffffff;
-            border: none;
-            padding: 0.9rem 2.2rem;
-            font-family: var(--font-main);
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: var(--border-radius-md);
-            cursor: pointer;
-            box-shadow: var(--shadow-medium);
-            transition: var(--transition-smooth);
-            gap: 0.6rem;
-            margin-top: 1.2rem;
-            z-index: 10;
-        }
-        .hero-cta-btn i {
-            font-size: 1rem;
-            transition: var(--transition-smooth);
-        }
-        .hero-cta-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-        }
-        .hero-cta-btn:hover i {
-            transform: translateY(3px);
-        }
-        .hero-cta-btn:active {
-            transform: translateY(0);
-        }
+        
 
     </style>
 </head>
@@ -2846,10 +2840,7 @@
             <span class="hero-badge">שיווקים — הכל במקום אחד לעסק ולבית</span>
             <h1 class="hero-title">אספקה מקצועית<br><span>למוסד, לבית ולמשרד</span></h1>
             <p class="hero-desc">מתמחים באספקת מוצרי נייר וניגוב, חומרי ניקוי מקצועיים, מוצרי חד-פעמי ומוצרים ייעודיים לצימרים ומתחמי אירוח. שירות אישי ומהיר ישירות אליכם.</p>
-            <button class="hero-cta-btn" onclick="document.getElementById('portals-grid').scrollIntoView({ behavior: 'smooth', block: 'start' })">
-                <span>מעבר לקטלוג המוצרים</span>
-                <i class="fa-solid fa-arrow-down"></i>
-            </button>
+            
             
             <div class="hero-stats">
                 <div class="hero-stat-card">
