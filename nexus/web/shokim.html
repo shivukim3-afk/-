@@ -3909,6 +3909,10 @@
             if (mode === 'quick') {
                 renderQuickOrderTable();
             }
+            
+            if (typeof isHandlingHashChange !== 'undefined' && !isHandlingHashChange) {
+                updateHash('#' + mode);
+            }
         }
 
         function filterPortal(portal, btn) {
@@ -3978,6 +3982,11 @@
                     subGrid.style.display = 'none';
                     document.getElementById('active-portal-header').style.display = 'none';
                 }
+                
+                // Sync URL hash
+                if (typeof isHandlingHashChange !== 'undefined' && !isHandlingHashChange) {
+                    updateHash('#catalog/' + activePortal);
+                }
             } else {
                 // activePortal is empty string (homepage catalog mode selected)
                 document.getElementById('portals-grid').style.display = 'grid';
@@ -3985,6 +3994,11 @@
                 document.getElementById('active-portal-header').style.display = 'none';
                 const backText = document.getElementById('back-btn-text');
                 if (backText) backText.textContent = 'חזרה למסך הבית';
+                
+                // Sync URL hash
+                if (typeof isHandlingHashChange !== 'undefined' && !isHandlingHashChange) {
+                    updateHash('#catalog');
+                }
             }
             
             // Mark active portal card
@@ -7700,6 +7714,151 @@
         }
 
 
+        let isSyncingHash = false;
+        let isHandlingHashChange = false;
+
+        function updateHash(hash) {
+            isSyncingHash = true;
+            window.location.hash = hash;
+            setTimeout(() => { isSyncingHash = false; }, 50);
+        }
+
+        window.addEventListener('hashchange', () => {
+            if (isSyncingHash) return;
+            isHandlingHashChange = true;
+            handleHashChange();
+            isHandlingHashChange = false;
+        });
+
+        function handleHashChange() {
+            const hash = window.location.hash || '#home';
+            
+            if (hash === '#home') {
+                // Restore mobile home layout
+                document.body.classList.remove('mobile-catalog-active', 'mobile-quick-active');
+                document.body.classList.add('mobile-home-active');
+                document.querySelectorAll('.content-view').forEach(v => v.classList.remove('revealed'));
+                document.querySelectorAll('.mode-square-btn').forEach(b => b.classList.remove('active'));
+                
+                // Desktop compatibility
+                document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
+                document.getElementById('view-catalog').classList.add('active');
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                const catTab = document.querySelector('.tab-btn[onclick*="catalog"]');
+                if (catTab) catTab.classList.add('active');
+                
+                // Clear active portal/filters
+                activePortal = '';
+                activeSubCategory = '';
+                document.getElementById('portals-grid').style.display = 'grid';
+                document.getElementById('sub-portals-grid').style.display = 'none';
+                document.getElementById('active-portal-header').style.display = 'none';
+                renderCatalog();
+            } 
+            else if (hash === '#quick') {
+                // Switch mode
+                switchMode('quick');
+                document.body.classList.remove('mobile-home-active', 'mobile-catalog-active');
+                document.body.classList.add('mobile-quick-active');
+                document.querySelectorAll('.content-view').forEach(v => v.classList.remove('revealed'));
+                const activeView = document.getElementById('view-quick');
+                if (activeView) activeView.classList.add('revealed');
+                
+                // Update tabs active state
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                const quickTab = document.querySelector('.tab-btn[onclick*="quick"]');
+                if (quickTab) quickTab.classList.add('active');
+            } 
+            else if (hash === '#catalog') {
+                // Enter catalog selection
+                switchMode('catalog');
+                document.body.classList.remove('mobile-home-active', 'mobile-quick-active');
+                document.body.classList.add('mobile-catalog-active');
+                document.querySelectorAll('.content-view').forEach(v => v.classList.remove('revealed'));
+                const activeView = document.getElementById('view-catalog');
+                if (activeView) activeView.classList.add('revealed');
+                
+                // Update tabs
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                const catTab = document.querySelector('.tab-btn[onclick*="catalog"]');
+                if (catTab) catTab.classList.add('active');
+                
+                // Reset portals grid
+                activePortal = '';
+                activeSubCategory = '';
+                document.getElementById('portals-grid').style.display = 'grid';
+                document.getElementById('sub-portals-grid').style.display = 'none';
+                document.getElementById('active-portal-header').style.display = 'none';
+                const backText = document.getElementById('back-btn-text');
+                if (backText) backText.textContent = 'חזרה למסך הבית';
+                
+                renderCatalog();
+            } 
+            else if (hash.startsWith('#catalog/')) {
+                const portal = hash.split('/')[1];
+                switchMode('catalog');
+                document.body.classList.remove('mobile-home-active', 'mobile-quick-active');
+                document.body.classList.add('mobile-catalog-active');
+                document.querySelectorAll('.content-view').forEach(v => v.classList.remove('revealed'));
+                const activeView = document.getElementById('view-catalog');
+                if (activeView) activeView.classList.add('revealed');
+                
+                // Set active portal
+                activePortal = portal;
+                activeSubCategory = 'all';
+                
+                const subGrid = document.getElementById('sub-portals-grid');
+                const isMobile = document.body.classList.contains('mobile-catalog-active') || window.innerWidth <= 600;
+                
+                if (isMobile) {
+                    document.getElementById('portals-grid').style.display = 'none';
+                    const backText = document.getElementById('back-btn-text');
+                    if (backText) backText.textContent = 'חזרה לקטגוריות';
+                } else {
+                    if (activePortal !== 'all') {
+                        document.getElementById('portals-grid').style.display = 'none';
+                    } else {
+                        document.getElementById('portals-grid').style.display = 'grid';
+                    }
+                }
+                
+                if (activePortal !== 'all') {
+                    const categoriesToShow = Object.keys(CATEGORIES).filter(catId => {
+                        return PRODUCTS.some(p => p.category === catId && p.portals.includes(activePortal));
+                    });
+                    
+                    let subHtml = '';
+                    categoriesToShow.forEach(catId => {
+                        const cat = CATEGORIES[catId];
+                        subHtml += `
+                            <div class="sub-portal-card ${activeSubCategory === catId ? 'active' : ''}" onclick="filterSubCategory('${catId}', this)">
+                                <div class="sub-portal-card-icon"><i class="fa-solid ${cat.fa}"></i></div>
+                                <div class="sub-portal-card-title">${cat.name}</div>
+                                <div class="sub-portal-card-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+                            </div>
+                        `;
+                    });
+                    
+                    subGrid.innerHTML = subHtml;
+                    subGrid.style.display = 'grid';
+                    document.getElementById('active-portal-header').style.display = 'flex';
+                    
+                    let activeTitle = 'כל המוצרים';
+                    if (activePortal === 'institution') activeTitle = 'ציוד למוסד';
+                    if (activePortal === 'home') activeTitle = 'מוצרים לבית';
+                    if (activePortal === 'bb') activeTitle = 'מוצרים לצימרים';
+                    if (activePortal === 'office') activeTitle = 'ציוד למשרד';
+                    
+                    document.getElementById('active-portal-title-text').textContent = activeTitle;
+                } else {
+                    subGrid.style.display = 'none';
+                    document.getElementById('active-portal-header').style.display = 'none';
+                }
+                
+                renderCatalog();
+            }
+        }
+
         function handleMobileModeClick(mode) {
             // Run native switchMode routine
             switchMode(mode);
@@ -7749,10 +7908,23 @@
                 b.classList.remove('active');
             });
             
+            // Update URL hash back to home
+            updateHash('#home');
+            
             // Scroll back to top
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
 
+                // Initialize app state
+        window.addEventListener('load', () => {
+            const currentHash = window.location.hash;
+            if (currentHash && currentHash !== '#home') {
+                handleHashChange();
+            } else {
+                updateHash('#home');
+            }
+        });
+        
         // 8. INITIALIZE EVERYTHING
         loadAccessibilitySettings();
         initCanvas();
