@@ -2751,6 +2751,9 @@
                 min-width: 35px !important;
                 text-align: center !important;
             }
+            .hero-stat-card:active {
+                transform: scale(0.97) !important;
+            }
             .hero-stat-label {
                 font-size: 0.72rem !important;
                 margin: 0 !important;
@@ -2884,15 +2887,14 @@
             }
 
             /* ==========================================================================
-               STEP 1: MAIN PORTALS GRID (Reverted to original layout with All Products)
+               STEP 1: MAIN PORTALS GRID (Modified to hide All Products on mobile, yielding 2x2 grid of categories)
                ========================================================================== */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
             .portal-card[data-portal="all"] {
-                display: flex !important; /* Restore All Products card */
-                grid-column: span 2 !important;
+                display: none !important; /* Hide All Products card on mobile catalog */
             }
             .portal-card {
                 padding: 1rem !important;
@@ -2904,6 +2906,10 @@
                 border: 1px solid #e2e8f0 !important;
                 border-radius: var(--border-radius-lg) !important;
                 box-shadow: var(--shadow-soft) !important;
+                transition: transform 0.2s, box-shadow 0.2s !important;
+            }
+            .portal-card:active {
+                transform: scale(0.96) !important;
             }
             .portal-card.active {
                 border-color: var(--color-cyan) !important;
