@@ -1397,6 +1397,26 @@
         }
 
         @media (max-width: 600px) {
+            .mobile-home-extra {
+                display: block !important;
+                margin-top: 0.8rem !important;
+            }
+            .mobile-home-extra .empty-state-banner {
+                display: block !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .mobile-home-extra .banner-features-bar {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+                padding: 1.2rem !important;
+                margin-top: 0 !important;
+                margin-bottom: 2rem !important;
+            }
+            .mobile-home-extra .feature-divider {
+                display: none !important;
+            }
+
             /* Mobile back header style */
             .mobile-back-header {
                 display: none;
@@ -1834,103 +1854,85 @@
                 padding: 0.7rem !important;
             }
             
-            /* Portals grid (Sleek minimalist vertical cards stacked vertically, 1 per row) */
+            /* Mobile Home Extra Banners style */
+            .mobile-home-extra {
+                display: none;
+            }
+            
+            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
             .portals-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 1 !important;
+                grid-column: span 2 !important; /* All products card spans full width */
             }
             .portal-card {
-                padding: 1.6rem 1rem !important;
+                padding: 1.2rem 0.8rem !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-align: center !important;
-                gap: 0.8rem !important;
+                gap: 0.6rem !important;
                 background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.05) !important;
-                border-radius: var(--border-radius-lg) !important;
-                box-shadow: 0 4px 12px rgba(10, 25, 49, 0.02) !important;
+                border: 1.5px solid var(--color-blue) !important; /* Custom blue border */
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
                 position: relative !important;
             }
             .portal-icon {
-                width: 54px !important;
-                height: 54px !important;
+                width: 44px !important;
+                height: 44px !important;
                 border-radius: 50% !important;
-                background: rgba(10, 25, 49, 0.03) !important;
-                color: var(--color-navy) !important;
-                font-size: 1.3rem !important;
+                background: rgba(0, 133, 255, 0.05) !important;
+                color: var(--color-blue) !important;
+                font-size: 1.15rem !important;
                 margin: 0 !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
             }
             .portal-title {
-                font-size: 1.05rem !important;
+                font-size: 0.95rem !important;
                 font-weight: 800 !important;
-                color: var(--color-navy) !important;
+                color: var(--color-blue) !important; /* Color title text blue */
                 margin: 0 !important;
             }
             .portal-desc {
                 display: none !important;
             }
             .portal-arrow {
-                display: none !important; /* Hide arrow in vertical card format */
+                display: none !important; /* Remove arrow */
             }
             
-            /* Sub-portals grid (subcategories slider) */
+            /* Remove Sub-portals grid (subcategories slider) completely from mobile view */
             .sub-portals-grid {
-                display: flex !important;
-                overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                gap: 0.6rem !important;
-                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
-                margin-bottom: 1.5rem !important;
-                -ms-overflow-style: none !important;
-                scrollbar-width: none !important;
-            }
-            .sub-portals-grid::-webkit-scrollbar {
                 display: none !important;
             }
-            .sub-portal-card {
-                flex: 0 0 110px !important;
-                height: 110px !important;
-                scroll-snap-align: start !important;
-            }
-            .sub-portal-card-icon {
-                font-size: 1.5rem !important;
-                margin: 0 !important;
-                color: var(--color-blue) !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                height: 28px !important;
-            }
-            .sub-portal-card-title {
-                font-size: 0.82rem !important;
-                font-weight: 700 !important;
-                color: var(--color-navy) !important;
-                line-height: 1.3 !important;
-                margin: 0 !important;
-                display: -webkit-box !important;
-                -webkit-line-clamp: 2 !important;
-                -webkit-box-orient: vertical !important;
-                overflow: hidden !important;
-                height: 2.6em !important;
-                width: 100% !important;
-            }
-            .sub-portal-card-arrow {
-                display: none !important;
-            }
+            
             .active-portal-title {
                 font-size: 1.25rem !important;
             }
             .back-btn-link {
                 font-size: 0.88rem !important;
                 padding: 0.4rem 0.8rem !important;
+            }
+            
+            /* Adjusted search bar style: push down with breathing space and add blue border */
+            .mobile-search-bar-container {
+                margin-top: 1.6rem !important;
+                margin-bottom: 1.2rem !important;
+            }
+            #mobile-search-wrapper {
+                border: 1.5px solid var(--color-blue) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
+                overflow: hidden !important;
+            }
+            #mobile-catalog-search {
+                border: none !important; /* Remove input border so wrapper border shows cleanly */
+                box-shadow: none !important;
             }
             
             /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
@@ -3134,6 +3136,35 @@
                 <div class="mode-square-icon"><i class="fa-solid fa-table-list"></i></div>
                 <div class="mode-square-title">טופס הזמנה מהיר</div>
                 <div class="mode-square-desc">הזמנה מרוכזת בשניות</div>
+            </div>
+        </div>
+
+                <!-- MOBILE HOME ONLY BANNERS -->
+        <div class="mobile-home-extra" id="mobile-home-extra">
+            <div class="empty-state-banner">
+                <div class="banner-logo-container">
+                    <div class="banner-logo-main">
+                        <span class="banner-logo-text">שיווקים</span>
+                        <span class="banner-logo-arrow"></span>
+                    </div>
+                    <div class="banner-logo-sub">למוסד • לבית • למשרד • לצימרים</div>
+                </div>
+            </div>
+            <div class="banner-features-bar">
+                <div class="feature-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>משלוחים מהירים</span>
+                </div>
+                <div class="feature-divider"></div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <span>שירות אישי</span>
+                </div>
+                <div class="feature-divider"></div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-award"></i>
+                    <span>איכות פרימיום</span>
+                </div>
             </div>
         </div>
 
@@ -6011,103 +6042,85 @@
                 padding: 0.7rem !important;
             }
             
-            /* Portals grid (Sleek minimalist vertical cards stacked vertically, 1 per row) */
+            /* Mobile Home Extra Banners style */
+            .mobile-home-extra {
+                display: none;
+            }
+            
+            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
             .portals-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 1 !important;
+                grid-column: span 2 !important; /* All products card spans full width */
             }
             .portal-card {
-                padding: 1.6rem 1rem !important;
+                padding: 1.2rem 0.8rem !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-align: center !important;
-                gap: 0.8rem !important;
+                gap: 0.6rem !important;
                 background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.05) !important;
-                border-radius: var(--border-radius-lg) !important;
-                box-shadow: 0 4px 12px rgba(10, 25, 49, 0.02) !important;
+                border: 1.5px solid var(--color-blue) !important; /* Custom blue border */
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
                 position: relative !important;
             }
             .portal-icon {
-                width: 54px !important;
-                height: 54px !important;
+                width: 44px !important;
+                height: 44px !important;
                 border-radius: 50% !important;
-                background: rgba(10, 25, 49, 0.03) !important;
-                color: var(--color-navy) !important;
-                font-size: 1.3rem !important;
+                background: rgba(0, 133, 255, 0.05) !important;
+                color: var(--color-blue) !important;
+                font-size: 1.15rem !important;
                 margin: 0 !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
             }
             .portal-title {
-                font-size: 1.05rem !important;
+                font-size: 0.95rem !important;
                 font-weight: 800 !important;
-                color: var(--color-navy) !important;
+                color: var(--color-blue) !important; /* Color title text blue */
                 margin: 0 !important;
             }
             .portal-desc {
                 display: none !important;
             }
             .portal-arrow {
-                display: none !important; /* Hide arrow in vertical card format */
+                display: none !important; /* Remove arrow */
             }
             
-            /* Sub-portals grid (subcategories slider) */
+            /* Remove Sub-portals grid (subcategories slider) completely from mobile view */
             .sub-portals-grid {
-                display: flex !important;
-                overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                gap: 0.6rem !important;
-                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
-                margin-bottom: 1.5rem !important;
-                -ms-overflow-style: none !important;
-                scrollbar-width: none !important;
-            }
-            .sub-portals-grid::-webkit-scrollbar {
                 display: none !important;
             }
-            .sub-portal-card {
-                flex: 0 0 110px !important;
-                height: 110px !important;
-                scroll-snap-align: start !important;
-            }
-            .sub-portal-card-icon {
-                font-size: 1.5rem !important;
-                margin: 0 !important;
-                color: var(--color-blue) !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                height: 28px !important;
-            }
-            .sub-portal-card-title {
-                font-size: 0.82rem !important;
-                font-weight: 700 !important;
-                color: var(--color-navy) !important;
-                line-height: 1.3 !important;
-                margin: 0 !important;
-                display: -webkit-box !important;
-                -webkit-line-clamp: 2 !important;
-                -webkit-box-orient: vertical !important;
-                overflow: hidden !important;
-                height: 2.6em !important;
-                width: 100% !important;
-            }
-            .sub-portal-card-arrow {
-                display: none !important;
-            }
+            
             .active-portal-title {
                 font-size: 1.25rem !important;
             }
             .back-btn-link {
                 font-size: 0.88rem !important;
                 padding: 0.4rem 0.8rem !important;
+            }
+            
+            /* Adjusted search bar style: push down with breathing space and add blue border */
+            .mobile-search-bar-container {
+                margin-top: 1.6rem !important;
+                margin-bottom: 1.2rem !important;
+            }
+            #mobile-search-wrapper {
+                border: 1.5px solid var(--color-blue) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
+                overflow: hidden !important;
+            }
+            #mobile-catalog-search {
+                border: none !important; /* Remove input border so wrapper border shows cleanly */
+                box-shadow: none !important;
             }
             
             /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
@@ -7574,12 +7587,15 @@
 
 
         function handleMobileModeClick(mode) {
-            // Hide hero and mode squares on mobile to simulate opening a new page
+            // Hide hero, mode squares and homepage banners on mobile
             const hero = document.querySelector('.hero');
             if (hero) hero.style.setProperty('display', 'none', 'important');
             
             const squares = document.getElementById('mobile-mode-squares');
             if (squares) squares.style.setProperty('display', 'none', 'important');
+            
+            const homeExtra = document.getElementById('mobile-home-extra');
+            if (homeExtra) homeExtra.style.setProperty('display', 'none', 'important');
             
             // Run native switchMode routine
             switchMode(mode);
@@ -7598,17 +7614,20 @@
             const activeBtn = document.getElementById(`square-${mode}-btn`);
             if (activeBtn) activeBtn.classList.add('active');
             
-            // Scroll to the very top of the page (since hero is hidden, this brings view directly below header)
+            // Scroll to the very top of the page
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
 
         function handleMobileBackClick() {
-            // Restore hero and mode squares visibility
+            // Restore hero, mode squares and homepage banners visibility
             const hero = document.querySelector('.hero');
             if (hero) hero.style.setProperty('display', 'flex', 'important');
             
             const squares = document.getElementById('mobile-mode-squares');
             if (squares) squares.style.setProperty('display', 'grid', 'important');
+            
+            const homeExtra = document.getElementById('mobile-home-extra');
+            if (homeExtra) homeExtra.style.setProperty('display', 'block', 'important');
             
             // Hide content views
             document.querySelectorAll('.content-view').forEach(v => {
@@ -7620,7 +7639,7 @@
                 b.classList.remove('active');
             });
             
-            // Scroll smoothly back to top
+            // Scroll back to top
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
 
