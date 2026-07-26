@@ -2785,11 +2785,6 @@
             #view-catalog .banner-features-bar {
                 display: none !important;
             }
-
-            /* Hide Sub-portals grid (subcategories slider) completely from mobile */
-            .sub-portals-grid {
-                display: none !important;
-            }
             
             /* Mobile Square selection buttons styling */
             .mobile-mode-squares {
@@ -2904,16 +2899,58 @@
                 box-shadow: none !important;
             }
 
-            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
+            /* ==========================================================================
+               STEP 1: MAIN PORTALS GRID (Reverted to original layout with All Products)
+               ========================================================================== */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
+                gap: 0.8rem !important;
             }
-            /* Hide the "All Products" square completely to make a perfect 2x2 grid of categories */
             .portal-card[data-portal="all"] {
-                display: none !important;
+                display: flex !important; /* Restore All Products card */
+                grid-column: span 2 !important;
             }
             .portal-card {
+                padding: 1rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 0.5rem !important;
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: var(--border-radius-lg) !important;
+                box-shadow: var(--shadow-soft) !important;
+            }
+            .portal-card.active {
+                border-color: var(--color-cyan) !important;
+                box-shadow: 0 0 0 2px var(--color-cyan), var(--shadow-hover) !important;
+            }
+            .portal-icon {
+                font-size: 2.2rem !important;
+                background: none !important;
+                color: var(--color-navy) !important;
+                width: auto !important;
+                height: auto !important;
+            }
+            .portal-title {
+                font-size: 1.1rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+            }
+            .portal-arrow {
+                display: none !important; /* Hide arrows inside category cards on mobile */
+            }
+
+            /* ==========================================================================
+               STEP 2: SUB-PORTALS GRID (Subcategories 2x2 grid of beautiful blue squares)
+               ========================================================================== */
+            .sub-portals-grid {
+                display: grid !important; /* Unhide on mobile! */
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .sub-portal-card {
                 padding: 1.5rem 0.8rem !important;
                 display: flex !important;
                 flex-direction: column !important;
@@ -2922,21 +2959,22 @@
                 text-align: center !important;
                 gap: 0.6rem !important;
                 background: #ffffff !important;
-                border: 1px solid rgba(0, 133, 255, 0.15) !important;
+                border: 1.5px solid var(--color-blue) !important;
                 border-radius: var(--border-radius-lg) !important;
                 box-shadow: 0 4px 12px rgba(0, 133, 255, 0.03) !important;
                 position: relative !important;
+                height: auto !important;
                 transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
             }
-            .portal-card:active {
+            .sub-portal-card:active {
                 transform: scale(0.96) !important;
             }
-            .portal-card.active {
+            .sub-portal-card.active {
                 background: rgba(0, 133, 255, 0.04) !important;
                 border-color: var(--color-blue) !important;
                 box-shadow: 0 0 0 2px rgba(0, 133, 255, 0.2), 0 4px 15px rgba(0, 133, 255, 0.08) !important;
             }
-            .portal-icon {
+            .sub-portal-card-icon {
                 width: 46px !important;
                 height: 46px !important;
                 border-radius: 50% !important;
@@ -2949,17 +2987,17 @@
                 justify-content: center !important;
                 transition: transform 0.2s !important;
             }
-            .portal-card:active .portal-icon {
-                transform: scale(0.9) !important;
-            }
-            .portal-title {
+            .sub-portal-card-title {
                 font-size: 0.98rem !important;
                 font-weight: 800 !important;
                 color: var(--color-blue) !important;
                 margin: 0 !important;
+                height: auto !important;
+                display: block !important;
+                width: auto !important;
             }
-            .portal-arrow {
-                display: none !important;
+            .sub-portal-card-arrow {
+                display: none !important; /* Hide arrows on mobile */
             }
 
             /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
