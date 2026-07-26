@@ -2665,6 +2665,46 @@
            HERMETIC MOBILE-ONLY OVERRIDES (Strictly under 600px, 0% leak to Desktop)
            ========================================================================== */
         @media (max-width: 600px) {
+            /* State visibility based on body classes - 100% bulletproof for resize/emulation */
+            body.mobile-home-active .content-view {
+                display: none !important;
+            }
+            body.mobile-home-active .mobile-mode-squares {
+                display: grid !important;
+            }
+            body.mobile-home-active .mobile-home-extra {
+                display: block !important;
+            }
+            body.mobile-home-active .hero {
+                display: flex !important;
+            }
+
+            body.mobile-catalog-active .hero {
+                display: none !important;
+            }
+            body.mobile-catalog-active .mobile-mode-squares {
+                display: none !important;
+            }
+            body.mobile-catalog-active .mobile-home-extra {
+                display: none !important;
+            }
+            body.mobile-catalog-active #view-catalog {
+                display: block !important;
+            }
+
+            body.mobile-quick-active .hero {
+                display: none !important;
+            }
+            body.mobile-quick-active .mobile-mode-squares {
+                display: none !important;
+            }
+            body.mobile-quick-active .mobile-home-extra {
+                display: none !important;
+            }
+            body.mobile-quick-active #view-quick {
+                display: block !important;
+            }
+
             /* Minimalist half-screen Hero */
             .hero {
                 height: 48vh !important;
@@ -2722,20 +2762,8 @@
             .mode-tabs {
                 display: none !important;
             }
-            
-            /* Hide catalog content views by default until selected */
-            .content-view {
-                display: none !important;
-            }
-            .content-view.active.revealed {
-                display: block !important;
-            }
 
             /* Mobile Home Extra Banners style */
-            .mobile-home-extra {
-                display: block !important;
-                margin-top: 0.8rem !important;
-            }
             .mobile-home-extra .empty-state-banner {
                 display: block !important;
                 margin-bottom: 0.8rem !important;
@@ -2763,10 +2791,8 @@
                 display: none !important;
             }
             
-            /* Mobile Square selection buttons */
+            /* Mobile Square selection buttons styling */
             .mobile-mode-squares {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
                 gap: 0.8rem !important;
                 padding: 1rem 0 !important;
                 margin-top: 0.5rem !important;
@@ -2832,7 +2858,6 @@
 
             /* Mobile Back Header */
             .mobile-back-header {
-                display: block !important;
                 margin-bottom: 0.8rem !important;
                 margin-top: 0.5rem !important;
                 text-align: right !important;
@@ -4003,33 +4028,7 @@
 
             // Show a friendly visual guide if no portal (category) is active and no search is entered
             if (!activePortal && !searchQuery) {
-                container.innerHTML = `
-                    <div class="empty-state-banner">
-                        <div class="banner-logo-container">
-                            <div class="banner-logo-main">
-                                <span class="banner-logo-text">שיווקים</span>
-                                <span class="banner-logo-arrow"></span>
-                            </div>
-                            <div class="banner-logo-sub">למוסד • לבית • למשרד • לצימרים</div>
-                        </div>
-                    </div>
-                    <div class="banner-features-bar">
-                        <div class="feature-item">
-                            <i class="fa-solid fa-truck-fast"></i>
-                            <span>משלוחים מהירים</span>
-                        </div>
-                        <div class="feature-divider"></div>
-                        <div class="feature-item">
-                            <i class="fa-solid fa-handshake-angle"></i>
-                            <span>שירות אישי</span>
-                        </div>
-                        <div class="feature-divider"></div>
-                        <div class="feature-item">
-                            <i class="fa-solid fa-award"></i>
-                            <span>איכות מנצחת</span>
-                        </div>
-                    </div>
-                `;
+                container.innerHTML = '';
                 return;
             }
 
@@ -7562,18 +7561,12 @@
 
 
         function handleMobileModeClick(mode) {
-            // Hide hero, mode squares and homepage banners on mobile
-            const hero = document.querySelector('.hero');
-            if (hero) hero.style.setProperty('display', 'none', 'important');
-            
-            const squares = document.getElementById('mobile-mode-squares');
-            if (squares) squares.style.setProperty('display', 'none', 'important');
-            
-            const homeExtra = document.getElementById('mobile-home-extra');
-            if (homeExtra) homeExtra.style.setProperty('display', 'none', 'important');
-            
             // Run native switchMode routine
             switchMode(mode);
+            
+            // Mark mobile layout states cleanly on body tag
+            document.body.classList.remove('mobile-home-active');
+            document.body.classList.add(`mobile-${mode}-active`);
             
             // Mark revealed status for mobile view
             document.querySelectorAll('.content-view').forEach(v => {
@@ -7594,15 +7587,9 @@
         }
 
         function handleMobileBackClick() {
-            // Restore hero, mode squares and homepage banners visibility
-            const hero = document.querySelector('.hero');
-            if (hero) hero.style.setProperty('display', 'flex', 'important');
-            
-            const squares = document.getElementById('mobile-mode-squares');
-            if (squares) squares.style.setProperty('display', 'grid', 'important');
-            
-            const homeExtra = document.getElementById('mobile-home-extra');
-            if (homeExtra) homeExtra.style.setProperty('display', 'block', 'important');
+            // Restore mobile home states cleanly on body tag
+            document.body.classList.remove('mobile-catalog-active', 'mobile-quick-active');
+            document.body.classList.add('mobile-home-active');
             
             // Hide content views
             document.querySelectorAll('.content-view').forEach(v => {
