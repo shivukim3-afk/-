@@ -3902,33 +3902,75 @@
         }
 
         function filterPortal(portal, btn) {
+            // Check if active sub-category filter is set to 'all'
+            activeSubCategory = 'all';
+            
+            if (activePortal === portal) {
+                // Toggle off
+                activePortal = null;
+            } else {
+                activePortal = portal;
+            }
+            
+            // Render category gateways (sub-portals) if portal is selected (but not 'all')
+            const subGrid = document.getElementById('sub-portals-grid');
+            const isMobile = window.innerWidth <= 600;
+            
+            if (activePortal !== null) {
+                // On mobile, if we are inside a category, we hide the main category gateways grid to show products/subcategories directly
+                if (isMobile) {
+                    document.getElementById('portals-grid').style.display = 'none';
+                    const backText = document.getElementById('back-btn-text');
+                    if (backText) backText.textContent = 'חזרה לקטגוריות';
+                } else {
+                    if (activePortal !== 'all') {
+                        document.getElementById('portals-grid').style.display = 'none';
+                    } else {
+                        document.getElementById('portals-grid').style.display = 'grid';
+                    }
+                }
+                
+                if (activePortal !== 'all') {
+                    // Fetch categories belonging to active portal
+                    const categoriesToShow = Object.keys(CATEGORIES).filter(catId => {
+                        return PRODUCTS.some(p => p.category === catId && p.portals.includes(activePortal));
+                    });
+                    
+                    let subHtml = '';
+                    categoriesToShow.forEach(catId => {
+                        const cat = CATEGORIES[catId];
+                        subHtml += `
+                            <div class="sub-portal-card ${activeSubCategory === catId ? 'active' : ''}" onclick="filterSubCategory('${catId}', this)">
+                                <div class="sub-portal-card-icon"><i class="fa-solid ${cat.fa}"></i></div>
+                                <div class="sub-portal-card-title">${cat.name}</div>
+                                <div class="sub-portal-card-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+                            </div>
+                        `;
+                    });
+                    
+                    subGrid.innerHTML = subHtml;
+                    subGrid.style.display = 'grid';
+                    document.getElementById('active-portal-header').style.display = 'flex';
+                    document.getElementById('active-portal-title-text').textContent = PORTALS[activePortal].name;
+                } else {
+                    subGrid.style.display = 'none';
+                    document.getElementById('active-portal-header').style.display = 'none';
+                }
+            } else {
+                // activePortal is null (homepage catalog mode selected)
+                document.getElementById('portals-grid').style.display = 'grid';
+                subGrid.style.display = 'none';
+                document.getElementById('active-portal-header').style.display = 'none';
+                const backText = document.getElementById('back-btn-text');
+                if (backText) backText.textContent = 'חזרה למסך הבית';
+            }
+            
+            // Mark active portal card
             document.querySelectorAll('.portal-card').forEach(c => c.classList.remove('active'));
             if (btn) btn.classList.add('active');
             
-            activePortal = portal;
-            activeSubCategory = 'all';
-            
-            if (portal) {
-                // Hide main portals grid
-                document.getElementById('portals-grid').style.display = 'none';
-                
-                // Show header with back button and active portal title
-                const header = document.getElementById('active-portal-header');
-                const titleText = document.getElementById('active-portal-title-text');
-                
-                let title = 'כל המוצרים';
-                if (portal === 'institution') title = 'ציוד למוסד';
-                if (portal === 'home') title = 'מוצרים לבית';
-                if (portal === 'bb') title = 'מוצרים לצימרים';
-                
-                titleText.textContent = title;
-                header.style.display = 'flex';
-                
-                renderSubPortals();
-                renderCatalog();
-            } else {
-                goBackToPortals();
-            }
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Back to main portal selector screen
@@ -3960,7 +4002,7 @@
         // Render Sub-Category Portals dynamically (Smaller matching main design)
         function renderSubPortals() {
             const subGrid = document.getElementById('sub-portals-grid');
-            if (!activePortal) {
+            if (!activePortal || activePortal === 'all') {
                 subGrid.style.display = 'none';
                 return;
             }
