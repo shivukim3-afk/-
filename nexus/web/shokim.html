@@ -2896,7 +2896,7 @@
             }
 
             /* ==========================================================================
-               STEP 1: MAIN PORTALS GRID (Modified to render 4 categories first in 2x2 grid, then All Products card spanning 2 columns. Removed display:grid !important to allow JS display toggling)
+               STEP 1: MAIN PORTALS GRID (Modified to render 4 categories first in 2x2 grid, then All Products card spanning 2 columns)
                ========================================================================== */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
@@ -2945,7 +2945,7 @@
             }
 
             /* ==========================================================================
-               STEP 2: SUB-PORTALS GRID (Subcategories 2x2 grid of beautiful blue squares. Removed display:grid !important to allow JS display toggling)
+               STEP 2: SUB-PORTALS GRID (Subcategories 2x2 grid of elegant navy cards matching the style of previous cards)
                ========================================================================== */
             .sub-portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
@@ -2961,9 +2961,9 @@
                 text-align: center !important;
                 gap: 0.6rem !important;
                 background: #ffffff !important;
-                border: 1.5px solid var(--color-blue) !important;
+                border: 1px solid #e2e8f0 !important;
                 border-radius: var(--border-radius-lg) !important;
-                box-shadow: 0 4px 12px rgba(0, 133, 255, 0.03) !important;
+                box-shadow: var(--shadow-soft) !important;
                 position: relative !important;
                 height: auto !important;
                 transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
@@ -2972,16 +2972,16 @@
                 transform: scale(0.96) !important;
             }
             .sub-portal-card.active {
-                background: rgba(0, 133, 255, 0.04) !important;
-                border-color: var(--color-blue) !important;
-                box-shadow: 0 0 0 2px rgba(0, 133, 255, 0.2), 0 4px 15px rgba(0, 133, 255, 0.08) !important;
+                background: rgba(0, 180, 216, 0.04) !important;
+                border-color: var(--color-cyan) !important;
+                box-shadow: 0 0 0 2px var(--color-cyan), var(--shadow-hover) !important;
             }
             .sub-portal-card-icon {
                 width: 46px !important;
                 height: 46px !important;
                 border-radius: 50% !important;
-                background: rgba(0, 133, 255, 0.06) !important;
-                color: var(--color-blue) !important;
+                background: rgba(10, 25, 49, 0.05) !important;
+                color: var(--color-navy) !important;
                 font-size: 1.25rem !important;
                 margin: 0 !important;
                 display: flex !important;
@@ -2990,9 +2990,9 @@
                 transition: transform 0.2s !important;
             }
             .sub-portal-card-title {
-                font-size: 0.98rem !important;
+                font-size: 0.95rem !important;
                 font-weight: 800 !important;
-                color: var(--color-blue) !important;
+                color: var(--color-navy) !important;
                 margin: 0 !important;
                 height: auto !important;
                 display: block !important;
@@ -3955,7 +3955,15 @@
                     subGrid.innerHTML = subHtml;
                     subGrid.style.display = 'grid';
                     document.getElementById('active-portal-header').style.display = 'flex';
-                    document.getElementById('active-portal-title-text').textContent = PORTALS[activePortal].name;
+                    
+                    // Safe dynamic title text generation to prevent ReferenceError (since PORTALS array is not defined)
+                    let activeTitle = 'כל המוצרים';
+                    if (activePortal === 'institution') activeTitle = 'ציוד למוסד';
+                    if (activePortal === 'home') activeTitle = 'מוצרים לבית';
+                    if (activePortal === 'bb') activeTitle = 'מוצרים לצימרים';
+                    if (activePortal === 'office') activeTitle = 'ציוד למשרד';
+                    
+                    document.getElementById('active-portal-title-text').textContent = activeTitle;
                 } else {
                     subGrid.style.display = 'none';
                     document.getElementById('active-portal-header').style.display = 'none';
