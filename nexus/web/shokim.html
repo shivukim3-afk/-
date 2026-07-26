@@ -3606,7 +3606,7 @@
                 catProducts.forEach(prod => {
                     const iconSvg = SVG_TEMPLATES[prod.icon] || '';
                     const visualHtml = prod.image 
-                        ? `<img src="${prod.image}" alt="${prod.name}" class="product-img">`
+                        ? `<img src="${prod.image}" alt="${prod.name}" class="product-img" loading="lazy">`
                         : iconSvg;
                     const cartItem = cart.find(item => item.id === prod.id);
                     const qty = cartItem ? cartItem.quantity : 0;
@@ -6759,7 +6759,7 @@
             content.innerHTML = `
                 <div style="display: flex; flex-direction: column; gap: 1.2rem; text-align: right; direction: rtl;">
                     <div style="width: 100%; height: 220px; background: #ffffff; border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #f1f5f9; position: relative;">
-                        <img src="${prod.image || 'assets/placeholder.jpg'}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <img src="${prod.image || 'assets/placeholder.jpg'}" style="max-width: 100%; max-height: 100%; object-fit: contain;" loading="lazy">
                         ${getProductBadge(prod)}
                     </div>
                     <div>
