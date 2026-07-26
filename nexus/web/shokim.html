@@ -1397,373 +1397,6 @@
         }
 
         @media (max-width: 600px) {
-            .mobile-home-extra {
-                display: block !important;
-                margin-top: 0.8rem !important;
-            }
-            .mobile-home-extra .empty-state-banner {
-                display: block !important;
-                margin-bottom: 0.8rem !important;
-            }
-            .mobile-home-extra .banner-features-bar {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.8rem !important;
-                padding: 1.2rem !important;
-                margin-top: 0 !important;
-                margin-bottom: 2rem !important;
-            }
-            .mobile-home-extra .feature-divider {
-                display: none !important;
-            }
-
-            /* Mobile back header style */
-            .mobile-back-header {
-                display: none;
-            }
-            
-            @media (max-width: 600px) {
-                .mobile-back-header {
-                    display: block !important;
-                    margin-bottom: 0.8rem !important;
-                    margin-top: 0.5rem !important;
-                    text-align: right !important;
-                }
-                .back-home-btn {
-                    background: rgba(10, 25, 49, 0.05) !important;
-                    border: none !important;
-                    color: var(--color-navy) !important;
-                    padding: 0.6rem 1.2rem !important;
-                    font-family: var(--font-main) !important;
-                    font-size: 0.88rem !important;
-                    font-weight: 700 !important;
-                    border-radius: var(--border-radius-md) !important;
-                    cursor: pointer !important;
-                    display: inline-flex !important;
-                    align-items: center !important;
-                    gap: 0.5rem !important;
-                    transition: var(--transition-smooth) !important;
-                    box-shadow: none !important;
-                }
-                .back-home-btn:active {
-                    transform: scale(0.95) !important;
-                }
-                
-                /* Smart, efficient full-width rows for categories */
-                .portals-grid {
-                    grid-template-columns: 1fr !important;
-                    gap: 0.6rem !important;
-                }
-                .portal-card {
-                    flex-direction: row !important;
-                    align-items: center !important;
-                    text-align: right !important;
-                    padding: 0.8rem 1rem !important;
-                    gap: 1rem !important;
-                    border-radius: var(--border-radius-md) !important;
-                    position: relative !important;
-                }
-                .portal-icon {
-                    width: 38px !important;
-                    height: 38px !important;
-                    font-size: 1.1rem !important;
-                    margin-left: 0 !important;
-                }
-                .portal-title {
-                    font-size: 0.95rem !important;
-                    font-weight: 700 !important;
-                    margin: 0 !important;
-                }
-                .portal-arrow {
-                    display: block !important;
-                    font-size: 0.9rem !important;
-                    color: var(--text-muted) !important;
-                    margin-right: auto !important; /* Push arrow to the left side */
-                }
-                
-                /* Full-width premium horizontal rows for product cards (1 per row) */
-                .products-grid {
-                    grid-template-columns: 1fr !important;
-                    gap: 0.8rem !important;
-                }
-                .product-card {
-                    display: flex !important;
-                    flex-direction: row !important; /* Side-by-side row layout */
-                    align-items: center !important;
-                    padding: 0.8rem !important;
-                    gap: 0.8rem !important;
-                    text-align: right !important;
-                }
-                .product-visual {
-                    width: 85px !important;
-                    height: 85px !important;
-                    flex: 0 0 85px !important;
-                    margin-bottom: 0 !important; /* Reset bottom margin */
-                }
-                .product-name {
-                    font-size: 0.92rem !important;
-                    font-weight: 700 !important;
-                    height: auto !important; /* Auto wrap height */
-                    margin-bottom: 0.2rem !important;
-                    display: -webkit-box !important;
-                    -webkit-line-clamp: 2 !important;
-                    -webkit-box-orient: vertical !important;
-                    overflow: hidden !important;
-                }
-                .product-pack {
-                    font-size: 0.76rem !important;
-                    margin-bottom: 0.3rem !important;
-                }
-                
-                /* Layout for price and add-to-cart in the horizontal view */
-                .product-card > div:not(.product-visual) {
-                    flex-grow: 1 !important;
-                    display: flex !important;
-                    flex-direction: column !important;
-                }
-                
-                /* Align price and cart button nicely */
-                .product-price {
-                    font-size: 1.1rem !important;
-                    margin-bottom: 0.4rem !important;
-                }
-                .add-to-cart-btn {
-                    padding: 0.45rem 1rem !important;
-                    font-size: 0.82rem !important;
-                    width: auto !important;
-                    align-self: flex-start !important; /* Align to the left (Ltr flow) */
-                }
-            }
-
-            /* Minimalist half-screen Hero */
-            .hero {
-                height: 48vh !important;
-                min-height: 280px !important;
-                padding: 4rem 1rem 1rem 1rem !important;
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: center !important;
-                align-items: center !important;
-                text-align: center !important;
-                gap: 0.5rem !important;
-            }
-            
-            /* Hide catalog content views by default until selected */
-            .content-view {
-                display: none !important;
-            }
-            .content-view.active.revealed {
-                display: block !important;
-            }
-            
-            /* Hide the desktop tabs bar entirely on mobile */
-            .mode-tabs {
-                display: none !important;
-            }
-            
-            /* Mobile Square buttons layout */
-            .mobile-mode-squares {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 0.8rem !important;
-                padding: 1rem 0 !important;
-                margin-top: 0.5rem !important;
-                margin-bottom: 1.5rem !important;
-            }
-            .mode-square-btn {
-                background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.08) !important;
-                border-radius: var(--border-radius-lg) !important;
-                padding: 1.5rem 0.8rem !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                text-align: center !important;
-                gap: 0.6rem !important;
-                box-shadow: var(--shadow-soft) !important;
-                cursor: pointer !important;
-                transition: var(--transition-smooth) !important;
-            }
-            .mode-square-btn:active {
-                transform: scale(0.95) !important;
-            }
-            .mode-square-icon {
-                width: 46px !important;
-                height: 46px !important;
-                border-radius: 50% !important;
-                background: rgba(37, 99, 235, 0.06) !important;
-                color: var(--color-blue) !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                font-size: 1.3rem !important;
-                transition: var(--transition-smooth) !important;
-            }
-            .mode-square-title {
-                font-size: 0.9rem !important;
-                font-weight: 800 !important;
-                color: var(--color-navy) !important;
-                margin: 0 !important;
-                transition: var(--transition-smooth) !important;
-            }
-            .mode-square-desc {
-                font-size: 0.7rem !important;
-                color: var(--text-muted) !important;
-                line-height: 1.2 !important;
-                margin: 0 !important;
-                transition: var(--transition-smooth) !important;
-            }
-            
-            /* Active square styling */
-            .mode-square-btn.active {
-                background: var(--color-navy) !important;
-                border-color: var(--color-navy) !important;
-                color: #ffffff !important;
-                box-shadow: var(--shadow-medium) !important;
-            }
-            .mode-square-btn.active .mode-square-title {
-                color: #ffffff !important;
-            }
-            .mode-square-btn.active .mode-square-desc {
-                color: rgba(255, 255, 255, 0.7) !important;
-            }
-            .mode-square-btn.active .mode-square-icon {
-                background: rgba(255, 255, 255, 0.15) !important;
-                color: #ffffff !important;
-            }
-
-            /* Compact Hero elements on Mobile - identical to desktop text but smaller */
-            .hero {
-                padding: 4.5rem 1rem 1.5rem 1rem !important;
-                gap: 0.8rem !important;
-            }
-            .hero-badge {
-                display: none !important; /* Remove blue bubble above */
-            }
-            .hero-title {
-                font-size: 1.6rem !important;
-                line-height: 1.3 !important;
-            }
-            .hero-desc {
-                display: block !important;
-                font-size: 0.82rem !important;
-                line-height: 1.4 !important;
-                margin-bottom: 0.8rem !important;
-            }
-            .hero-stats {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.4rem !important;
-                margin-top: 0.5rem !important;
-            }
-            .hero-stat-card {
-                padding: 0.5rem 0.8rem !important;
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                text-align: right !important;
-                gap: 0.6rem !important;
-                border-radius: var(--border-radius-sm) !important;
-            }
-            .hero-stat-num {
-                font-size: 1.2rem !important;
-                margin: 0 !important;
-                min-width: 35px !important;
-                text-align: center !important;
-            }
-            .hero-stat-label {
-                font-size: 0.72rem !important;
-                margin: 0 !important;
-                text-align: right !important;
-                line-height: 1.2 !important;
-            }
-            
-            /* Horizontal Slider / Carousel for Sub-portals subcategories list */
-            .sub-portals-grid {
-                display: flex !important;
-                overflow-x: auto !important;
-                scroll-snap-type: x mandatory !important;
-                gap: 0.6rem !important;
-                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
-                margin-bottom: 1.5rem !important;
-                -ms-overflow-style: none !important;
-                scrollbar-width: none !important;
-            }
-            .sub-portals-grid::-webkit-scrollbar {
-                display: none !important;
-            }
-            .sub-portal-card {
-                flex: 0 0 110px !important;
-                height: 110px !important;
-                scroll-snap-align: start !important;
-            }
-            
-            /* Mobile Sticky Bottom Action Bar */
-            .mobile-sticky-bar {
-                display: grid !important;
-                grid-template-columns: repeat(3, 1fr) !important;
-                position: fixed !important;
-                bottom: 0 !important;
-                left: 0 !important;
-                right: 0 !important;
-                background: rgba(255, 255, 255, 0.90) !important;
-                backdrop-filter: blur(12px) !important;
-                -webkit-backdrop-filter: blur(12px) !important;
-                border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
-                box-shadow: 0 -4px 20px rgba(10, 25, 49, 0.08) !important;
-                z-index: 999 !important;
-                padding: 0.5rem 0.2rem !important;
-                text-align: center !important;
-                direction: rtl !important;
-            }
-            .sticky-bar-item {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                color: var(--color-navy) !important;
-                text-decoration: none !important;
-                font-family: var(--font-main) !important;
-                font-size: 0.75rem !important;
-                font-weight: 700 !important;
-                cursor: pointer !important;
-                gap: 0.25rem !important;
-                transition: var(--transition-smooth) !important;
-            }
-            .sticky-bar-item i {
-                font-size: 1.25rem !important;
-            }
-            .sticky-bar-item.whatsapp {
-                color: #25D366 !important;
-            }
-            .sticky-bar-item.cart {
-                color: var(--color-blue) !important;
-            }
-            .sticky-bar-item:active {
-                transform: scale(0.95) !important;
-            }
-            body {
-                padding-bottom: 75px !important;
-            }
-            .mobile-sticky-bar .cart-count-badge {
-                position: absolute !important;
-                top: -8px !important;
-                right: -10px !important;
-                background: var(--color-orange) !important;
-                color: white !important;
-                font-size: 0.65rem !important;
-                font-weight: 800 !important;
-                min-width: 17px !important;
-                height: 17px !important;
-                border-radius: 50% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                padding: 0 4px !important;
-                border: 2px solid white !important;
-            }
-
             /* Hide arrows inside category cards on mobile to reduce clutter */
             .portal-arrow, .sub-portal-card-arrow {
                 display: none !important;
@@ -1854,155 +1487,132 @@
                 padding: 0.7rem !important;
             }
             
-            /* Mobile Home Extra Banners style */
-            .mobile-home-extra {
-                display: none;
-            }
-            
-            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
+            /* Portals grid (main categories) */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 2 !important; /* All products card spans full width */
+                grid-column: span 2 !important;
             }
             .portal-card {
-                padding: 1.2rem 0.8rem !important;
+                padding: 1rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 0.5rem !important;
+            }
+            .portal-icon {
+                width: 44px !important;
+                height: 44px !important;
+                font-size: 1.2rem !important;
+                margin-left: 0 !important;
+            }
+            .portal-title {
+                font-size: 0.95rem !important;
+            }
+            .portal-desc {
+                font-size: 0.75rem !important;
+                display: none !important;
+            }
+            
+            /* Sub-portals grid (subcategories) */
+            .sub-portals-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
+                margin-bottom: 2rem !important;
+            }
+            .sub-portal-card {
+                height: 120px !important;
+                padding: 1rem 0.6rem !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-align: center !important;
-                gap: 0.6rem !important;
-                background: #ffffff !important;
-                border: 1.5px solid var(--color-blue) !important; /* Custom blue border */
+                gap: 0.5rem !important;
                 border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
-                position: relative !important;
             }
-            .portal-icon {
-                width: 44px !important;
-                height: 44px !important;
-                border-radius: 50% !important;
-                background: rgba(0, 133, 255, 0.05) !important;
-                color: var(--color-blue) !important;
-                font-size: 1.15rem !important;
+            .sub-portal-card-icon {
+                font-size: 1.8rem !important;
                 margin: 0 !important;
+                color: var(--color-blue) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
+                height: 32px !important;
             }
-            .portal-title {
-                font-size: 0.95rem !important;
-                font-weight: 800 !important;
-                color: var(--color-blue) !important; /* Color title text blue */
+            .sub-portal-card-title {
+                font-size: 0.85rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                line-height: 1.3 !important;
                 margin: 0 !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                height: 2.6em !important;
+                width: 100% !important;
             }
-            .portal-desc {
-                display: none !important;
+            .sub-portal-card-arrow {
+                bottom: 0.9rem !important;
+                left: 0.9rem !important;
+                font-size: 1rem !important;
             }
-            .portal-arrow {
-                display: none !important; /* Remove arrow */
-            }
-            
-            /* Remove Sub-portals grid (subcategories slider) completely from mobile view */
-            .sub-portals-grid {
-                display: none !important;
-            }
-            
             .active-portal-title {
-                font-size: 1.25rem !important;
+                font-size: 1.4rem !important;
             }
             .back-btn-link {
-                font-size: 0.88rem !important;
+                font-size: 0.95rem !important;
                 padding: 0.4rem 0.8rem !important;
             }
             
-            /* Adjusted search bar style: push down with breathing space and add blue border */
-            .mobile-search-bar-container {
-                margin-top: 1.6rem !important;
-                margin-bottom: 1.2rem !important;
-            }
-            #mobile-search-wrapper {
-                border: 1.5px solid var(--color-blue) !important;
-                border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
-                overflow: hidden !important;
-            }
-            #mobile-catalog-search {
-                border: none !important; /* Remove input border so wrapper border shows cleanly */
-                box-shadow: none !important;
-            }
-            
-            /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
+            /* Products Grid */
             .products-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1.2rem !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
             }
             .product-card {
-                display: flex !important;
-                flex-direction: column !important; /* Stack vertically */
-                align-items: stretch !important;
-                padding: 1.2rem !important;
-                background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.05) !important;
-                border-radius: var(--border-radius-lg) !important;
-                box-shadow: 0 4px 12px rgba(10, 25, 49, 0.02) !important;
-                gap: 0.6rem !important;
-                text-align: right !important;
+                padding: 0.8rem !important;
+                border-radius: var(--border-radius-md) !important;
             }
             .product-visual {
-                width: 100% !important;
-                height: 220px !important;
-                flex: 0 0 220px !important;
+                height: 125px !important;
                 margin-bottom: 0.8rem !important;
-                border-radius: var(--border-radius-md) !important;
-                overflow: hidden !important;
-                border: 1px solid rgba(10, 25, 49, 0.03) !important;
-            }
-            .product-card > div:not(.product-visual) {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.3rem !important;
             }
             .product-name {
-                font-size: 1.02rem !important;
-                font-weight: 800 !important;
-                color: var(--color-navy) !important;
-                height: auto !important;
-                margin-bottom: 0.2rem !important;
-                line-height: 1.35 !important;
+                font-size: 0.92rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 0.4rem !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                height: 2.4em !important;
             }
             .product-pack {
-                font-size: 0.8rem !important;
-                color: var(--text-muted) !important;
+                font-size: 0.78rem !important;
                 margin-bottom: 0.4rem !important;
             }
             .product-desc {
                 display: none !important;
             }
             .info-toggle-btn {
-                display: none !important;
+                font-size: 0.75rem !important;
+                margin-top: 0.2rem !important;
+                margin-bottom: 0.2rem !important;
             }
-            .product-footer {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                margin-top: 0.4rem !important;
+            .product-info-drawer {
+                font-size: 0.75rem !important;
             }
             .product-price {
-                font-size: 1.2rem !important;
-                font-weight: 800 !important;
-                color: var(--color-navy) !important;
-                margin-bottom: 0 !important;
+                font-size: 1.1rem !important;
+                margin-bottom: 0.6rem !important;
             }
             .add-to-cart-btn {
-                padding: 0.6rem 1.4rem !important;
-                font-size: 0.9rem !important;
-                font-weight: 700 !important;
-                width: auto !important;
+                padding: 0.5rem !important;
+                font-size: 0.85rem !important;
                 border-radius: var(--border-radius-sm) !important;
             }
             
@@ -3041,15 +2651,405 @@
         }
 
     
-        
-
-    
-        /* Desktop styles for mobile squares (hidden by default) */
-        .mobile-mode-squares {
-            display: none;
+        /* ==========================================================================
+           MOBILE-ONLY ELEMENTS HIDDEN BY DEFAULT ON DESKTOP
+           ========================================================================== */
+        .mobile-mode-squares,
+        .mobile-home-extra,
+        .mobile-back-header,
+        .mobile-sticky-bar {
+            display: none !important;
         }
 
-    </style>
+        /* ==========================================================================
+           HERMETIC MOBILE-ONLY OVERRIDES (Strictly under 600px, 0% leak to Desktop)
+           ========================================================================== */
+        @media (max-width: 600px) {
+            /* Minimalist half-screen Hero */
+            .hero {
+                height: 48vh !important;
+                min-height: 280px !important;
+                padding: 4.5rem 1rem 1rem 1rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 0.5rem !important;
+            }
+            .hero-badge {
+                display: none !important;
+            }
+            .hero-title {
+                font-size: 1.6rem !important;
+                line-height: 1.3 !important;
+            }
+            .hero-desc {
+                display: block !important;
+                font-size: 0.82rem !important;
+                line-height: 1.4 !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .hero-stats {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.4rem !important;
+                margin-top: 0.5rem !important;
+            }
+            .hero-stat-card {
+                padding: 0.5rem 0.8rem !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: right !important;
+                gap: 0.6rem !important;
+                border-radius: var(--border-radius-sm) !important;
+            }
+            .hero-stat-num {
+                font-size: 1.2rem !important;
+                margin: 0 !important;
+                min-width: 35px !important;
+                text-align: center !important;
+            }
+            .hero-stat-label {
+                font-size: 0.72rem !important;
+                margin: 0 !important;
+                text-align: right !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Hide the desktop tabs bar entirely on mobile */
+            .mode-tabs {
+                display: none !important;
+            }
+            
+            /* Hide catalog content views by default until selected */
+            .content-view {
+                display: none !important;
+            }
+            .content-view.active.revealed {
+                display: block !important;
+            }
+
+            /* Mobile Home Extra Banners style */
+            .mobile-home-extra {
+                display: block !important;
+                margin-top: 0.8rem !important;
+            }
+            .mobile-home-extra .empty-state-banner {
+                display: block !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .mobile-home-extra .banner-features-bar {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+                padding: 1.2rem !important;
+                margin-top: 0 !important;
+                margin-bottom: 2rem !important;
+            }
+            .mobile-home-extra .feature-divider {
+                display: none !important;
+            }
+            
+            /* Hide desktop state banners in catalog view on mobile */
+            #view-catalog .empty-state-banner,
+            #view-catalog .banner-features-bar {
+                display: none !important;
+            }
+
+            /* Hide Sub-portals grid (subcategories slider) completely from mobile */
+            .sub-portals-grid {
+                display: none !important;
+            }
+            
+            /* Mobile Square selection buttons */
+            .mobile-mode-squares {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.8rem !important;
+                padding: 1rem 0 !important;
+                margin-top: 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            .mode-square-btn {
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.08) !important;
+                border-radius: var(--border-radius-lg) !important;
+                padding: 1.5rem 0.8rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 0.6rem !important;
+                box-shadow: var(--shadow-soft) !important;
+                cursor: pointer !important;
+                transition: var(--transition-smooth) !important;
+            }
+            .mode-square-btn:active {
+                transform: scale(0.95) !important;
+            }
+            .mode-square-icon {
+                width: 46px !important;
+                height: 46px !important;
+                border-radius: 50% !important;
+                background: rgba(37, 99, 235, 0.06) !important;
+                color: var(--color-blue) !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 1.3rem !important;
+            }
+            .mode-square-title {
+                font-size: 0.9rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+                margin: 0 !important;
+            }
+            .mode-square-desc {
+                font-size: 0.7rem !important;
+                color: var(--text-muted) !important;
+                line-height: 1.2 !important;
+                margin: 0 !important;
+            }
+            .mode-square-btn.active {
+                background: var(--color-navy) !important;
+                border-color: var(--color-navy) !important;
+                color: #ffffff !important;
+                box-shadow: var(--shadow-medium) !important;
+            }
+            .mode-square-btn.active .mode-square-title {
+                color: #ffffff !important;
+            }
+            .mode-square-btn.active .mode-square-desc {
+                color: rgba(255, 255, 255, 0.7) !important;
+            }
+            .mode-square-btn.active .mode-square-icon {
+                background: rgba(255, 255, 255, 0.15) !important;
+                color: #ffffff !important;
+            }
+
+            /* Mobile Back Header */
+            .mobile-back-header {
+                display: block !important;
+                margin-bottom: 0.8rem !important;
+                margin-top: 0.5rem !important;
+                text-align: right !important;
+            }
+            .back-home-btn {
+                background: rgba(10, 25, 49, 0.05) !important;
+                border: none !important;
+                color: var(--color-navy) !important;
+                padding: 0.6rem 1.2rem !important;
+                font-family: var(--font-main) !important;
+                font-size: 0.88rem !important;
+                font-weight: 700 !important;
+                border-radius: var(--border-radius-md) !important;
+                cursor: pointer !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                transition: var(--transition-smooth) !important;
+            }
+            .back-home-btn:active {
+                transform: scale(0.95) !important;
+            }
+
+            /* Mobile Search Bar wrapper and margins */
+            .mobile-search-bar-container {
+                margin-top: 1.6rem !important;
+                margin-bottom: 1.2rem !important;
+            }
+            #mobile-search-wrapper {
+                display: block !important;
+                border: 1.5px solid var(--color-blue) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
+                overflow: hidden !important;
+            }
+            #mobile-catalog-search {
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
+            .portals-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
+            }
+            .portal-card[data-portal="all"] {
+                grid-column: span 2 !important;
+            }
+            .portal-card {
+                padding: 1.2rem 0.8rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                gap: 0.6rem !important;
+                background: #ffffff !important;
+                border: 1.5px solid var(--color-blue) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: none !important;
+                position: relative !important;
+            }
+            .portal-icon {
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 50% !important;
+                background: rgba(0, 133, 255, 0.05) !important;
+                color: var(--color-blue) !important;
+                font-size: 1.15rem !important;
+                margin: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .portal-title {
+                font-size: 0.95rem !important;
+                font-weight: 800 !important;
+                color: var(--color-blue) !important;
+                margin: 0 !important;
+            }
+            .portal-arrow {
+                display: none !important;
+            }
+
+            /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
+            .products-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.2rem !important;
+            }
+            .product-card {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                padding: 1.2rem !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.05) !important;
+                border-radius: var(--border-radius-lg) !important;
+                box-shadow: 0 4px 12px rgba(10, 25, 49, 0.02) !important;
+                gap: 0.6rem !important;
+                text-align: right !important;
+            }
+            .product-visual {
+                width: 100% !important;
+                height: 220px !important;
+                flex: 0 0 220px !important;
+                margin-bottom: 0.8rem !important;
+                border-radius: var(--border-radius-md) !important;
+                overflow: hidden !important;
+                border: 1px solid rgba(10, 25, 49, 0.03) !important;
+            }
+            .product-card > div:not(.product-visual) {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.3rem !important;
+            }
+            .product-name {
+                font-size: 1.02rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+                height: auto !important;
+                margin-bottom: 0.2rem !important;
+                line-height: 1.35 !important;
+            }
+            .product-pack {
+                font-size: 0.8rem !important;
+                color: var(--text-muted) !important;
+                margin-bottom: 0.4rem !important;
+            }
+            .product-desc {
+                display: none !important;
+            }
+            .info-toggle-btn {
+                display: none !important;
+            }
+            .product-footer {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                width: 100% !important;
+                margin-top: 0.4rem !important;
+            }
+            .product-price {
+                font-size: 1.2rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+                margin-bottom: 0 !important;
+            }
+            .add-to-cart-btn {
+                padding: 0.6rem 1.4rem !important;
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                width: auto !important;
+                border-radius: var(--border-radius-sm) !important;
+            }
+
+            /* Mobile Sticky Bottom Bar */
+            .mobile-sticky-bar {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: rgba(255, 255, 255, 0.90) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+                border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+                box-shadow: 0 -4px 20px rgba(10, 25, 49, 0.08) !important;
+                z-index: 999 !important;
+                padding: 0.5rem 0.2rem !important;
+                text-align: center !important;
+                direction: rtl !important;
+            }
+            .sticky-bar-item {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                color: var(--color-navy) !important;
+                text-decoration: none !important;
+                font-family: var(--font-main) !important;
+                font-size: 0.75rem !important;
+                font-weight: 700 !important;
+                cursor: pointer !important;
+                gap: 0.25rem !important;
+            }
+            .sticky-bar-item i {
+                font-size: 1.25rem !important;
+            }
+            .sticky-bar-item.whatsapp {
+                color: #25D366 !important;
+            }
+            .sticky-bar-item.cart {
+                color: var(--color-blue) !important;
+            }
+            body {
+                padding-bottom: 75px !important;
+            }
+            .mobile-sticky-bar .cart-count-badge {
+                position: absolute !important;
+                top: -8px !important;
+                right: -10px !important;
+                background: var(--color-orange) !important;
+                color: white !important;
+                font-size: 0.65rem !important;
+                font-weight: 800 !important;
+                min-width: 17px !important;
+                height: 17px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0 4px !important;
+                border: 2px solid white !important;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -3106,7 +3106,6 @@
             <h1 class="hero-title">אספקה מקצועית<br><span>למוסד, לבית ולמשרד</span></h1>
             <p class="hero-desc">מתמחים באספקת מוצרי נייר וניגוב, חומרי ניקוי מקצועיים, מוצרי חד-פעמי ומוצרים ייעודיים לצימרים ומתחמי אירוח. שירות אישי ומהיר ישירות אליכם.</p>
             
-            
             <div class="hero-stats">
                 <div class="hero-stat-card">
                     <div class="hero-stat-num">100%</div>
@@ -3139,7 +3138,7 @@
             </div>
         </div>
 
-                <!-- MOBILE HOME ONLY BANNERS -->
+        <!-- MOBILE HOME ONLY BANNERS -->
         <div class="mobile-home-extra" id="mobile-home-extra">
             <div class="empty-state-banner">
                 <div class="banner-logo-container">
@@ -3650,7 +3649,7 @@
         // 3. CART SYSTEM LOGIC
         let cart = [];
 
-        function updateCartCounter() {
+                function updateCartCounter() {
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cart-counter').textContent = count;
             
@@ -6042,155 +6041,132 @@
                 padding: 0.7rem !important;
             }
             
-            /* Mobile Home Extra Banners style */
-            .mobile-home-extra {
-                display: none;
-            }
-            
-            /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
+            /* Portals grid (main categories) */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.8rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 2 !important; /* All products card spans full width */
+                grid-column: span 2 !important;
             }
             .portal-card {
-                padding: 1.2rem 0.8rem !important;
+                padding: 1rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 0.5rem !important;
+            }
+            .portal-icon {
+                width: 44px !important;
+                height: 44px !important;
+                font-size: 1.2rem !important;
+                margin-left: 0 !important;
+            }
+            .portal-title {
+                font-size: 0.95rem !important;
+            }
+            .portal-desc {
+                font-size: 0.75rem !important;
+                display: none !important;
+            }
+            
+            /* Sub-portals grid (subcategories) */
+            .sub-portals-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
+                margin-bottom: 2rem !important;
+            }
+            .sub-portal-card {
+                height: 120px !important;
+                padding: 1rem 0.6rem !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-align: center !important;
-                gap: 0.6rem !important;
-                background: #ffffff !important;
-                border: 1.5px solid var(--color-blue) !important; /* Custom blue border */
+                gap: 0.5rem !important;
                 border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
-                position: relative !important;
             }
-            .portal-icon {
-                width: 44px !important;
-                height: 44px !important;
-                border-radius: 50% !important;
-                background: rgba(0, 133, 255, 0.05) !important;
-                color: var(--color-blue) !important;
-                font-size: 1.15rem !important;
+            .sub-portal-card-icon {
+                font-size: 1.8rem !important;
                 margin: 0 !important;
+                color: var(--color-blue) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
+                height: 32px !important;
             }
-            .portal-title {
-                font-size: 0.95rem !important;
-                font-weight: 800 !important;
-                color: var(--color-blue) !important; /* Color title text blue */
+            .sub-portal-card-title {
+                font-size: 0.85rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                line-height: 1.3 !important;
                 margin: 0 !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                height: 2.6em !important;
+                width: 100% !important;
             }
-            .portal-desc {
-                display: none !important;
+            .sub-portal-card-arrow {
+                bottom: 0.9rem !important;
+                left: 0.9rem !important;
+                font-size: 1rem !important;
             }
-            .portal-arrow {
-                display: none !important; /* Remove arrow */
-            }
-            
-            /* Remove Sub-portals grid (subcategories slider) completely from mobile view */
-            .sub-portals-grid {
-                display: none !important;
-            }
-            
             .active-portal-title {
-                font-size: 1.25rem !important;
+                font-size: 1.4rem !important;
             }
             .back-btn-link {
-                font-size: 0.88rem !important;
+                font-size: 0.95rem !important;
                 padding: 0.4rem 0.8rem !important;
             }
             
-            /* Adjusted search bar style: push down with breathing space and add blue border */
-            .mobile-search-bar-container {
-                margin-top: 1.6rem !important;
-                margin-bottom: 1.2rem !important;
-            }
-            #mobile-search-wrapper {
-                border: 1.5px solid var(--color-blue) !important;
-                border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
-                overflow: hidden !important;
-            }
-            #mobile-catalog-search {
-                border: none !important; /* Remove input border so wrapper border shows cleanly */
-                box-shadow: none !important;
-            }
-            
-            /* Products Grid (1 Column of beautiful vertical cards stacked, 1 per row) */
+            /* Products Grid */
             .products-grid {
-                grid-template-columns: 1fr !important;
-                gap: 1.2rem !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
             }
             .product-card {
-                display: flex !important;
-                flex-direction: column !important; /* Stack vertically */
-                align-items: stretch !important;
-                padding: 1.2rem !important;
-                background: #ffffff !important;
-                border: 1px solid rgba(10, 25, 49, 0.05) !important;
-                border-radius: var(--border-radius-lg) !important;
-                box-shadow: 0 4px 12px rgba(10, 25, 49, 0.02) !important;
-                gap: 0.6rem !important;
-                text-align: right !important;
+                padding: 0.8rem !important;
+                border-radius: var(--border-radius-md) !important;
             }
             .product-visual {
-                width: 100% !important;
-                height: 220px !important;
-                flex: 0 0 220px !important;
+                height: 125px !important;
                 margin-bottom: 0.8rem !important;
-                border-radius: var(--border-radius-md) !important;
-                overflow: hidden !important;
-                border: 1px solid rgba(10, 25, 49, 0.03) !important;
-            }
-            .product-card > div:not(.product-visual) {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0.3rem !important;
             }
             .product-name {
-                font-size: 1.02rem !important;
-                font-weight: 800 !important;
-                color: var(--color-navy) !important;
-                height: auto !important;
-                margin-bottom: 0.2rem !important;
-                line-height: 1.35 !important;
+                font-size: 0.92rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 0.4rem !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+                height: 2.4em !important;
             }
             .product-pack {
-                font-size: 0.8rem !important;
-                color: var(--text-muted) !important;
+                font-size: 0.78rem !important;
                 margin-bottom: 0.4rem !important;
             }
             .product-desc {
                 display: none !important;
             }
             .info-toggle-btn {
-                display: none !important;
+                font-size: 0.75rem !important;
+                margin-top: 0.2rem !important;
+                margin-bottom: 0.2rem !important;
             }
-            .product-footer {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                margin-top: 0.4rem !important;
+            .product-info-drawer {
+                font-size: 0.75rem !important;
             }
             .product-price {
-                font-size: 1.2rem !important;
-                font-weight: 800 !important;
-                color: var(--color-navy) !important;
-                margin-bottom: 0 !important;
+                font-size: 1.1rem !important;
+                margin-bottom: 0.6rem !important;
             }
             .add-to-cart-btn {
-                padding: 0.6rem 1.4rem !important;
-                font-size: 0.9rem !important;
-                font-weight: 700 !important;
-                width: auto !important;
+                padding: 0.5rem !important;
+                font-size: 0.85rem !important;
                 border-radius: var(--border-radius-sm) !important;
             }
             
@@ -7585,7 +7561,6 @@
         }
 
 
-
         function handleMobileModeClick(mode) {
             // Hide hero, mode squares and homepage banners on mobile
             const hero = document.querySelector('.hero');
@@ -7642,7 +7617,6 @@
             // Scroll back to top
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
-
 
         // 8. INITIALIZE EVERYTHING
         loadAccessibilitySettings();
