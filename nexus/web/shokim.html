@@ -2868,7 +2868,8 @@
                 margin-top: 1.6rem !important;
                 margin-bottom: 1.2rem !important;
             }
-            #mobile-search-wrapper {
+            /* Styling mobile search wrapper class (which replaces class header-search to bypass display:none) */
+            .mobile-search-wrapper {
                 display: block !important;
                 border: 1px solid rgba(0, 133, 255, 0.2) !important;
                 background: #ffffff !important;
@@ -2877,7 +2878,7 @@
                 transition: var(--transition-smooth) !important;
                 overflow: hidden !important;
             }
-            #mobile-search-wrapper:focus-within {
+            .mobile-search-wrapper:focus-within {
                 border-color: var(--color-blue) !important;
                 box-shadow: 0 4px 12px rgba(0, 133, 255, 0.1) !important;
             }
@@ -2887,7 +2888,7 @@
             }
 
             /* ==========================================================================
-               STEP 1: MAIN PORTALS GRID (Modified to hide All Products on mobile, yielding 2x2 grid of categories)
+               STEP 1: MAIN PORTALS GRID (Hiding All Products card, rendering a beautiful 2x2 grid of 4 categories)
                ========================================================================== */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
@@ -2897,7 +2898,7 @@
                 display: none !important; /* Hide All Products card on mobile catalog */
             }
             .portal-card {
-                padding: 1rem !important;
+                padding: 1.5rem 0.8rem !important;
                 flex-direction: column !important;
                 align-items: center !important;
                 text-align: center !important;
@@ -3272,9 +3273,9 @@
                 </button>
             </div>
 
-            <!-- SEARCH BAR FOR MOBILE VIEW (Moved here with compact placeholder) -->
+            <!-- SEARCH BAR FOR MOBILE VIEW (Moved here with compact placeholder and custom class to prevent display:none override) -->
             <div class="mobile-search-bar-container">
-                <div class="header-search" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
+                <div class="mobile-search-wrapper" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
                     <input type="text" id="mobile-catalog-search" placeholder="חיפוש מוצרים" style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
                     <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
                 </div>
@@ -3312,6 +3313,14 @@
                     <div>
                         <div class="portal-title">לצימרים</div>
                         <div class="portal-desc">מתחמי אירוח, טקסטיל וטואלטיקה</div>
+                    </div>
+                    <div class="portal-arrow"><i class="fa-solid fa-arrow-left"></i></div>
+                </div>
+                <div class="portal-card" data-portal="office" onclick="filterPortal('office', this)">
+                    <div class="portal-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div>
+                        <div class="portal-title">למשרד</div>
+                        <div class="portal-desc">נייר צילום, קלסרים וניקוי משרדי</div>
                     </div>
                     <div class="portal-arrow"><i class="fa-solid fa-arrow-left"></i></div>
                 </div>
