@@ -84,6 +84,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="NEXUS", version="1.0.0", lifespan=lifespan)
 
+app.mount("/assets", StaticFiles(directory=STATIC_DIR / "assets"), name="assets")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -283,3 +285,19 @@ async def serve_index() -> HTMLResponse:
 @app.get("/dashboard")
 async def serve_dashboard() -> HTMLResponse:
     return HTMLResponse((STATIC_DIR / "dashboard.html").read_text(encoding="utf-8"))
+
+
+@app.get("/shokim")
+async def serve_shokim() -> HTMLResponse:
+    return HTMLResponse((STATIC_DIR / "shokim.html").read_text(encoding="utf-8"))
+
+
+@app.get("/order")
+async def serve_order() -> HTMLResponse:
+    return HTMLResponse((STATIC_DIR / "order.html").read_text(encoding="utf-8"))
+
+
+@app.get("/order.html")
+async def serve_order_html() -> HTMLResponse:
+    return HTMLResponse((STATIC_DIR / "order.html").read_text(encoding="utf-8"))
+
