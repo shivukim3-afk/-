@@ -1834,63 +1834,86 @@
                 padding: 0.7rem !important;
             }
             
-            /* Portals grid (main categories) */
+            /* Portals grid (Sleek minimalist horizontal rows for categories) */
             .portals-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 2 !important;
+                grid-column: span 1 !important;
             }
             .portal-card {
-                padding: 1rem !important;
-                flex-direction: column !important;
+                padding: 0.7rem 1rem !important;
+                display: flex !important;
+                flex-direction: row !important;
                 align-items: center !important;
-                text-align: center !important;
-                gap: 0.5rem !important;
+                text-align: right !important;
+                gap: 0.8rem !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.05) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: 0 1px 3px rgba(10, 25, 49, 0.02) !important;
+                position: relative !important;
             }
             .portal-icon {
-                width: 44px !important;
-                height: 44px !important;
-                font-size: 1.2rem !important;
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 50% !important;
+                background: rgba(10, 25, 49, 0.03) !important;
+                color: var(--color-navy) !important;
+                font-size: 1rem !important;
                 margin-left: 0 !important;
-            }
-            .portal-title {
-                font-size: 0.95rem !important;
-            }
-            .portal-desc {
-                font-size: 0.75rem !important;
-                display: none !important;
-            }
-            
-            /* Sub-portals grid (subcategories) */
-            .sub-portals-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
-                margin-bottom: 2rem !important;
-            }
-            .sub-portal-card {
-                height: 120px !important;
-                padding: 1rem 0.6rem !important;
+                margin-right: 0 !important;
                 display: flex !important;
-                flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
-                text-align: center !important;
-                gap: 0.5rem !important;
-                border-radius: var(--border-radius-md) !important;
+            }
+            .portal-title {
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                margin: 0 !important;
+            }
+            .portal-desc {
+                display: none !important;
+            }
+            .portal-arrow {
+                display: block !important;
+                font-size: 0.75rem !important;
+                color: var(--text-muted) !important;
+                margin-right: auto !important; /* Push arrow to the left end (RTL) */
+            }
+            
+            /* Sub-portals grid (subcategories slider) */
+            .sub-portals-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 0.6rem !important;
+                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+                -ms-overflow-style: none !important;
+                scrollbar-width: none !important;
+            }
+            .sub-portals-grid::-webkit-scrollbar {
+                display: none !important;
+            }
+            .sub-portal-card {
+                flex: 0 0 110px !important;
+                height: 110px !important;
+                scroll-snap-align: start !important;
             }
             .sub-portal-card-icon {
-                font-size: 1.8rem !important;
+                font-size: 1.5rem !important;
                 margin: 0 !important;
                 color: var(--color-blue) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                height: 32px !important;
+                height: 28px !important;
             }
             .sub-portal-card-title {
-                font-size: 0.85rem !important;
+                font-size: 0.82rem !important;
                 font-weight: 700 !important;
                 color: var(--color-navy) !important;
                 line-height: 1.3 !important;
@@ -1903,64 +1926,91 @@
                 width: 100% !important;
             }
             .sub-portal-card-arrow {
-                bottom: 0.9rem !important;
-                left: 0.9rem !important;
-                font-size: 1rem !important;
+                display: none !important;
             }
             .active-portal-title {
-                font-size: 1.4rem !important;
+                font-size: 1.25rem !important;
             }
             .back-btn-link {
-                font-size: 0.95rem !important;
+                font-size: 0.88rem !important;
                 padding: 0.4rem 0.8rem !important;
             }
             
-            /* Products Grid */
+            /* Products Grid (1 Column of clean minimalist horizontal cards) */
             .products-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
+                grid-template-columns: 1fr !important;
+                gap: 0.6rem !important;
             }
             .product-card {
-                padding: 0.8rem !important;
+                display: flex !important;
+                flex-direction: row !important; /* Row layout side-by-side */
+                align-items: center !important;
+                padding: 0.7rem !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.05) !important;
                 border-radius: var(--border-radius-md) !important;
+                box-shadow: 0 1px 3px rgba(10, 25, 49, 0.02) !important;
+                gap: 0.8rem !important;
+                text-align: right !important;
             }
             .product-visual {
-                height: 125px !important;
-                margin-bottom: 0.8rem !important;
+                width: 80px !important;
+                height: 80px !important;
+                flex: 0 0 80px !important;
+                margin-bottom: 0 !important;
+                border-radius: 6px !important;
+                overflow: hidden !important;
+                border: 1px solid rgba(10, 25, 49, 0.03) !important;
+            }
+            .product-card > div:not(.product-visual) {
+                flex-grow: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.2rem !important;
             }
             .product-name {
-                font-size: 0.92rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                height: auto !important;
+                margin-bottom: 0.1rem !important;
                 line-height: 1.3 !important;
-                margin-bottom: 0.4rem !important;
                 display: -webkit-box !important;
                 -webkit-line-clamp: 2 !important;
                 -webkit-box-orient: vertical !important;
                 overflow: hidden !important;
-                height: 2.4em !important;
             }
             .product-pack {
-                font-size: 0.78rem !important;
-                margin-bottom: 0.4rem !important;
+                font-size: 0.74rem !important;
+                color: var(--text-muted) !important;
+                margin-bottom: 0.15rem !important;
             }
             .product-desc {
                 display: none !important;
             }
             .info-toggle-btn {
-                font-size: 0.75rem !important;
-                margin-top: 0.2rem !important;
-                margin-bottom: 0.2rem !important;
+                display: none !important; /* Hide read more on mobile for extreme clean view */
             }
-            .product-info-drawer {
-                font-size: 0.75rem !important;
+            .product-footer {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                width: 100% !important;
+                margin-top: 0.2rem !important;
             }
             .product-price {
-                font-size: 1.1rem !important;
-                margin-bottom: 0.6rem !important;
+                font-size: 1.05rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+                margin-bottom: 0 !important;
             }
             .add-to-cart-btn {
-                padding: 0.5rem !important;
-                font-size: 0.85rem !important;
-                border-radius: var(--border-radius-sm) !important;
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.78rem !important;
+                font-weight: 700 !important;
+                width: auto !important;
+                border-radius: 4px !important;
+                align-self: flex-start !important;
             }
             
             /* Cart Drawer */
@@ -5970,63 +6020,86 @@
                 padding: 0.7rem !important;
             }
             
-            /* Portals grid (main categories) */
+            /* Portals grid (Sleek minimalist horizontal rows for categories) */
             .portals-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
             }
             .portal-card[data-portal="all"] {
-                grid-column: span 2 !important;
+                grid-column: span 1 !important;
             }
             .portal-card {
-                padding: 1rem !important;
-                flex-direction: column !important;
+                padding: 0.7rem 1rem !important;
+                display: flex !important;
+                flex-direction: row !important;
                 align-items: center !important;
-                text-align: center !important;
-                gap: 0.5rem !important;
+                text-align: right !important;
+                gap: 0.8rem !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.05) !important;
+                border-radius: var(--border-radius-md) !important;
+                box-shadow: 0 1px 3px rgba(10, 25, 49, 0.02) !important;
+                position: relative !important;
             }
             .portal-icon {
-                width: 44px !important;
-                height: 44px !important;
-                font-size: 1.2rem !important;
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 50% !important;
+                background: rgba(10, 25, 49, 0.03) !important;
+                color: var(--color-navy) !important;
+                font-size: 1rem !important;
                 margin-left: 0 !important;
-            }
-            .portal-title {
-                font-size: 0.95rem !important;
-            }
-            .portal-desc {
-                font-size: 0.75rem !important;
-                display: none !important;
-            }
-            
-            /* Sub-portals grid (subcategories) */
-            .sub-portals-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
-                margin-bottom: 2rem !important;
-            }
-            .sub-portal-card {
-                height: 120px !important;
-                padding: 1rem 0.6rem !important;
+                margin-right: 0 !important;
                 display: flex !important;
-                flex-direction: column !important;
                 align-items: center !important;
                 justify-content: center !important;
-                text-align: center !important;
-                gap: 0.5rem !important;
-                border-radius: var(--border-radius-md) !important;
+            }
+            .portal-title {
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                margin: 0 !important;
+            }
+            .portal-desc {
+                display: none !important;
+            }
+            .portal-arrow {
+                display: block !important;
+                font-size: 0.75rem !important;
+                color: var(--text-muted) !important;
+                margin-right: auto !important; /* Push arrow to the left end (RTL) */
+            }
+            
+            /* Sub-portals grid (subcategories slider) */
+            .sub-portals-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 0.6rem !important;
+                padding: 0.2rem 0.5rem 1rem 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+                -ms-overflow-style: none !important;
+                scrollbar-width: none !important;
+            }
+            .sub-portals-grid::-webkit-scrollbar {
+                display: none !important;
+            }
+            .sub-portal-card {
+                flex: 0 0 110px !important;
+                height: 110px !important;
+                scroll-snap-align: start !important;
             }
             .sub-portal-card-icon {
-                font-size: 1.8rem !important;
+                font-size: 1.5rem !important;
                 margin: 0 !important;
                 color: var(--color-blue) !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                height: 32px !important;
+                height: 28px !important;
             }
             .sub-portal-card-title {
-                font-size: 0.85rem !important;
+                font-size: 0.82rem !important;
                 font-weight: 700 !important;
                 color: var(--color-navy) !important;
                 line-height: 1.3 !important;
@@ -6039,64 +6112,91 @@
                 width: 100% !important;
             }
             .sub-portal-card-arrow {
-                bottom: 0.9rem !important;
-                left: 0.9rem !important;
-                font-size: 1rem !important;
+                display: none !important;
             }
             .active-portal-title {
-                font-size: 1.4rem !important;
+                font-size: 1.25rem !important;
             }
             .back-btn-link {
-                font-size: 0.95rem !important;
+                font-size: 0.88rem !important;
                 padding: 0.4rem 0.8rem !important;
             }
             
-            /* Products Grid */
+            /* Products Grid (1 Column of clean minimalist horizontal cards) */
             .products-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
+                grid-template-columns: 1fr !important;
+                gap: 0.6rem !important;
             }
             .product-card {
-                padding: 0.8rem !important;
+                display: flex !important;
+                flex-direction: row !important; /* Row layout side-by-side */
+                align-items: center !important;
+                padding: 0.7rem !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(10, 25, 49, 0.05) !important;
                 border-radius: var(--border-radius-md) !important;
+                box-shadow: 0 1px 3px rgba(10, 25, 49, 0.02) !important;
+                gap: 0.8rem !important;
+                text-align: right !important;
             }
             .product-visual {
-                height: 125px !important;
-                margin-bottom: 0.8rem !important;
+                width: 80px !important;
+                height: 80px !important;
+                flex: 0 0 80px !important;
+                margin-bottom: 0 !important;
+                border-radius: 6px !important;
+                overflow: hidden !important;
+                border: 1px solid rgba(10, 25, 49, 0.03) !important;
+            }
+            .product-card > div:not(.product-visual) {
+                flex-grow: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 0.2rem !important;
             }
             .product-name {
-                font-size: 0.92rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 700 !important;
+                color: var(--color-navy) !important;
+                height: auto !important;
+                margin-bottom: 0.1rem !important;
                 line-height: 1.3 !important;
-                margin-bottom: 0.4rem !important;
                 display: -webkit-box !important;
                 -webkit-line-clamp: 2 !important;
                 -webkit-box-orient: vertical !important;
                 overflow: hidden !important;
-                height: 2.4em !important;
             }
             .product-pack {
-                font-size: 0.78rem !important;
-                margin-bottom: 0.4rem !important;
+                font-size: 0.74rem !important;
+                color: var(--text-muted) !important;
+                margin-bottom: 0.15rem !important;
             }
             .product-desc {
                 display: none !important;
             }
             .info-toggle-btn {
-                font-size: 0.75rem !important;
-                margin-top: 0.2rem !important;
-                margin-bottom: 0.2rem !important;
+                display: none !important; /* Hide read more on mobile for extreme clean view */
             }
-            .product-info-drawer {
-                font-size: 0.75rem !important;
+            .product-footer {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                width: 100% !important;
+                margin-top: 0.2rem !important;
             }
             .product-price {
-                font-size: 1.1rem !important;
-                margin-bottom: 0.6rem !important;
+                font-size: 1.05rem !important;
+                font-weight: 800 !important;
+                color: var(--color-navy) !important;
+                margin-bottom: 0 !important;
             }
             .add-to-cart-btn {
-                padding: 0.5rem !important;
-                font-size: 0.85rem !important;
-                border-radius: var(--border-radius-sm) !important;
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.78rem !important;
+                font-weight: 700 !important;
+                width: auto !important;
+                border-radius: 4px !important;
+                align-self: flex-start !important;
             }
             
             /* Cart Drawer */
