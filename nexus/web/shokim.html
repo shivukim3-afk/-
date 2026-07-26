@@ -2888,10 +2888,16 @@
             }
             #mobile-search-wrapper {
                 display: block !important;
-                border: 1.5px solid var(--color-blue) !important;
+                border: 1px solid rgba(0, 133, 255, 0.2) !important;
+                background: #ffffff !important;
                 border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
+                box-shadow: 0 2px 8px rgba(0, 133, 255, 0.04) !important;
+                transition: var(--transition-smooth) !important;
                 overflow: hidden !important;
+            }
+            #mobile-search-wrapper:focus-within {
+                border-color: var(--color-blue) !important;
+                box-shadow: 0 4px 12px rgba(0, 133, 255, 0.1) !important;
             }
             #mobile-catalog-search {
                 border: none !important;
@@ -2901,13 +2907,14 @@
             /* Portals grid (Grid of 2 columns, blue border, blue text, no arrow) */
             .portals-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.8rem !important;
+                gap: 1rem !important;
             }
+            /* Hide the "All Products" square completely to make a perfect 2x2 grid of categories */
             .portal-card[data-portal="all"] {
-                grid-column: span 2 !important;
+                display: none !important;
             }
             .portal-card {
-                padding: 1.2rem 0.8rem !important;
+                padding: 1.5rem 0.8rem !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
@@ -2915,25 +2922,38 @@
                 text-align: center !important;
                 gap: 0.6rem !important;
                 background: #ffffff !important;
-                border: 1.5px solid var(--color-blue) !important;
-                border-radius: var(--border-radius-md) !important;
-                box-shadow: none !important;
+                border: 1px solid rgba(0, 133, 255, 0.15) !important;
+                border-radius: var(--border-radius-lg) !important;
+                box-shadow: 0 4px 12px rgba(0, 133, 255, 0.03) !important;
                 position: relative !important;
+                transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
+            }
+            .portal-card:active {
+                transform: scale(0.96) !important;
+            }
+            .portal-card.active {
+                background: rgba(0, 133, 255, 0.04) !important;
+                border-color: var(--color-blue) !important;
+                box-shadow: 0 0 0 2px rgba(0, 133, 255, 0.2), 0 4px 15px rgba(0, 133, 255, 0.08) !important;
             }
             .portal-icon {
-                width: 44px !important;
-                height: 44px !important;
+                width: 46px !important;
+                height: 46px !important;
                 border-radius: 50% !important;
-                background: rgba(0, 133, 255, 0.05) !important;
+                background: rgba(0, 133, 255, 0.06) !important;
                 color: var(--color-blue) !important;
-                font-size: 1.15rem !important;
+                font-size: 1.25rem !important;
                 margin: 0 !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
+                transition: transform 0.2s !important;
+            }
+            .portal-card:active .portal-icon {
+                transform: scale(0.9) !important;
             }
             .portal-title {
-                font-size: 0.95rem !important;
+                font-size: 0.98rem !important;
                 font-weight: 800 !important;
                 color: var(--color-blue) !important;
                 margin: 0 !important;
@@ -3073,7 +3093,7 @@
                 padding: 0 4px !important;
                 border: 2px solid white !important;
             }
-        
+            
             /* Hide active portal back header and category product count on mobile */
             .active-portal-header {
                 display: none !important;
@@ -3224,10 +3244,10 @@
                 </button>
             </div>
 
-            <!-- SEARCH BAR FOR MOBILE VIEW (Moved here) -->
+            <!-- SEARCH BAR FOR MOBILE VIEW (Moved here with compact placeholder) -->
             <div class="mobile-search-bar-container">
                 <div class="header-search" id="mobile-search-wrapper" style="display: none; width: 100%; max-width: 100%; margin: 0.5rem 0 1.2rem 0; position: relative;">
-                    <input type="text" id="mobile-catalog-search" placeholder="חפש מוצר ניקוי, נייר, חד פעמי..." style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
+                    <input type="text" id="mobile-catalog-search" placeholder="חיפוש מוצרים" style="width: 100%; height: 46px; border: 1px solid #e2e8f0; border-radius: var(--border-radius-md); padding: 0 1rem 0 3rem; font-family: var(--font-main); font-size: 16px; background: #ffffff; outline: none; transition: var(--transition-smooth); box-shadow: var(--shadow-soft);">
                     <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none;"></i>
                 </div>
             </div>
