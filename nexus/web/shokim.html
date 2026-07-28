@@ -3226,7 +3226,7 @@
 
     <!-- STICKY GLASSMORPHISM HEADER -->
     <header id="header">
-        <a href="#" class="logo-wrap">
+        <a href="#home" class="logo-wrap">
             <div class="logo-arrow-icon"></div>
             <div class="logo-text">שיווקים</div>
             <div class="logo-tagline">למוסד • לבית • למשרד</div>
@@ -4234,7 +4234,38 @@
 
             // Show a friendly visual guide if no portal (category) is active and no search is entered
             if (!activePortal && !searchQuery) {
-                container.innerHTML = '';
+                const isMobile = window.innerWidth <= 600;
+                if (isMobile) {
+                    container.innerHTML = '';
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state-banner">
+                            <div class="banner-logo-container">
+                                <div class="banner-logo-main">
+                                    <span class="banner-logo-text">שיווקים</span>
+                                    <span class="banner-logo-arrow"></span>
+                                </div>
+                                <div class="banner-logo-sub">למוסד • לבית • למשרד • לצימרים</div>
+                            </div>
+                        </div>
+                        <div class="banner-features-bar">
+                            <div class="feature-item">
+                                <i class="fa-solid fa-truck-fast"></i>
+                                <span>משלוחים מהירים</span>
+                            </div>
+                            <div class="feature-divider"></div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                                <span>שירות אישי</span>
+                            </div>
+                            <div class="feature-divider"></div>
+                            <div class="feature-item">
+                                <i class="fa-solid fa-award"></i>
+                                <span>איכות מנצחת</span>
+                            </div>
+                        </div>
+                    `;
+                }
                 return;
             }
 
@@ -7772,6 +7803,12 @@
         function updateHash(hash) {
             isSyncingHash = true;
             window.location.hash = hash;
+            
+            // Execute state update synchronously since hashchange listener is ignored
+            isHandlingHashChange = true;
+            handleHashChange();
+            isHandlingHashChange = false;
+            
             setTimeout(() => { isSyncingHash = false; }, 50);
         }
 
@@ -7804,24 +7841,19 @@
                     document.getElementById('active-portal-header').style.display = 'none';
                     renderCatalog();
                 } else {
-                    // Desktop Home View: Show Catalog View with All Products
+                    // Desktop Home View: Show Catalog View with Welcome State
                     document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
                     document.getElementById('view-catalog').classList.add('active');
                     
-                    activePortal = 'all';
-                    activeSubCategory = 'all';
+                    activePortal = '';
+                    activeSubCategory = '';
                     
                     document.getElementById('portals-grid').style.display = 'grid';
                     document.getElementById('sub-portals-grid').style.display = 'none';
                     document.getElementById('active-portal-header').style.display = 'none';
                     
-                    // Highlight the 'all' portal card in portals-grid
-                    document.querySelectorAll('#portals-grid .portal-card').forEach(c => {
-                        c.classList.remove('active');
-                        if (c.getAttribute('data-desktop-category') === 'all') {
-                            c.classList.add('active');
-                        }
-                    });
+                    // Clear active styling from all cards in portals-grid
+                    document.querySelectorAll('#portals-grid .portal-card').forEach(c => c.classList.remove('active'));
                     
                     renderCatalog();
                 }
