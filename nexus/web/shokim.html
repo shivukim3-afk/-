@@ -2709,6 +2709,13 @@
             transform: translateX(0);
         }
 
+        /* Prevent collision between category cards and floating buttons on desktop */
+        @media (min-width: 601px) {
+            .container {
+                padding: 0 5.5rem !important;
+            }
+        }
+
         /* ==========================================================================
            HERMETIC MOBILE-ONLY OVERRIDES (Strictly under 600px, 0% leak to Desktop)
            ========================================================================== */
